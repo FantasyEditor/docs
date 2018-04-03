@@ -25,7 +25,6 @@
 
 + 总是返回 true 。
 + 区别于[skill:is_common_attack]。
-
 * 返回
     * result (boolean) - 结果
 
@@ -34,7 +33,6 @@
 
 + 总是返回 false 。
 + 区别于[skill:is_skill]。
-
 * 返回
     * result (boolean) - 结果
 
@@ -43,7 +41,6 @@
 
 + 对不在冷却状态的攻击无效
 + 冷却的有效范围是[0, 当前冷却上限]
-
 * 参数
     * cd (number) - 冷却(秒)
 

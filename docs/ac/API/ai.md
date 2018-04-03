@@ -28,7 +28,6 @@
 ## 构造
 **`ac.ai[name]` 创建/获取AI**
 + 使用[unit:add_ai]来添加AI。
-
 * 参数
     * name (string) - AI名
 * 返回
@@ -45,7 +44,6 @@
 
 + 这里的 **self** 表示单位。
 + 单位添加AI时触发此事件。
-
 * 回调参数
     * data (table) - AI数据，使用[unit:add_ai]添加AI时作为 **参数2** 穿入。
 
