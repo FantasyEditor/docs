@@ -1,6 +1,6 @@
-# 攻击
-+ 攻击定义在[CommonSpellData]中。
-+ 将攻击配置在单位的[AttackSkill]中，单位就可以使用它进行攻击。
+# 攻击技能
++ 攻击技能定义在[CommonSpellData]中。
++ 将攻击技能配置在单位的[AttackSkill]中，单位就可以使用它进行攻击。
 
 ## active_cd
 **`attack:active_cd(max_cd)` 激活冷却**
@@ -21,7 +21,7 @@
     * name (string) - 攻击名
 
 ## is_common_attack
-**`skill:is_common_attack()` 是否是攻击技能**
+**`attack:is_common_attack()` 是否是攻击技能**
 
 + 总是返回 true 。
 + 区别于[skill:is_common_attack]。
