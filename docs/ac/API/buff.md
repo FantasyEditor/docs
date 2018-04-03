@@ -3,6 +3,34 @@
 
 当你制作一个复杂的技能效果时，它应该是有许多状态组合而成的。
 
+### 例子
+制作一个状态，单位在获得该状态5秒后失去该状态。
+
+```lua
+    -- 给状态一个合适的名字，以便在其他地方添加这个状态
+    local mt = ac.buff['持续5秒的状态']
+    -- 设置属性[持续时间]为5秒
+    mt.time = 5
+```
+
+你可以在合适的时候给单位添加状态，例如我们有个单位`u`：
+
+```lua
+    -- 添加状态，将状态对象保存在变量[buff]中
+    local buff = u:add_buff '持续5秒的状态'
+    {
+        -- 关联技能
+        skill = skill,
+    }
+```
+
+你可以再次修改这个状态的属性：
+
+```lua
+    -- 将刚刚添加的状态的剩余时间改为10秒
+    buff:set_remaining(10)
+```
+
 ### 构造
 创建/获取状态
 
@@ -14,6 +42,7 @@
 如果[ClientBuff]中有同名的状态定义，则会包含定义的属性。使用[unit:add_buff]来给单位添加状态。
 
 ```lua
+    -- 将创建的状态保存下来，你之后需要为它进行设置，以及注册事件
     local mt = ac.buff[name]
 ```
 
@@ -67,7 +96,7 @@
 #### source
 来源
 
-状态的来源，在[unit:add_buff]时设置。这会影响状态的[同步方式]。如果不设置，则为[unit:add_buff]时的对象。
+状态的来源，在[unit:add_buff]时设置。这会影响状态的[sync]属性的参照物。如果不设置，则为[unit:add_buff]时的对象。
 
 #### target
 目标
@@ -79,14 +108,169 @@
 
 状态会在经过此时间后自动移除。这个值类型为（number），默认为一个非常巨大的值，表示持续无限时间。
 
-[同步方式]: /ac/API/buff/属性/sync
+### 方法
+
+#### add_stack
+增加层数
+
+* 参数
+    * count (integer) - 状态的层数
+
+如果状态的属性允许，层数会显示在状态图标上。
+
+```lua
+    buff:add_stack(count)
+```
+
+#### get_pulse
+获取心跳
+
+* 返回
+    * pulse (number) - 触发[on_pulse]事件的周期
+
+```lua
+    local pulse = buff:get_pulse()
+```
+
+#### get_remaining
+获取剩余时间
+
+* 返回
+    * time (number) - 状态的剩余持续时间
+
+```lua
+    local time = buff:get_remaining()
+```
+
+#### get_stack
+获取层数
+
+* 返回
+    * count (integer) - 状态的层数
+
+```lua
+    local count = buff:get_stack()
+```
+
+#### remove
+移除状态
+
+```lua
+    buff:remove()
+```
+
+#### set_pulse
+设置周期
+
+* 参数
+    * pulse (number) - 触发[on_pulse]事件的周期
+
+```lua
+    buff:set_pulse(pulse)
+```
+
+#### set_remaining
+设置剩余时间
+
+* 参数
+    * time (number) - 状态的剩余持续时间
+
+```lua
+    buff:set_remaining(time)
+```
+
+#### set_stack
+设置层数
+
+* 参数
+    * count (integer) - 状态的层数
+
+```lua
+    buff:set_stack(count)
+```
+
+### 事件
+事件需要在[构造]状态时注册。事件中的`self`表示状态对象。
+
+#### on_add
+获得事件
+
+每当单位获得该状态时触发此事件。
+
+```lua
+    function mt:on_add()
+        -- 你的代码
+    end
+```
+
+#### on_cover
+叠加事件
+
+* 回调参数
+    * new (buff) - 新的状态
+* 回调返回
+    * cover (boolean) - 叠加方式。根据状态的[cover_type]，它有不同的处理。
+        * 若[cover_type]为独占模式：
+            * true: 当前状态被移除，新的状态被添加
+            * false: 阻止新的状态添加
+        * 若[cover_type]为共存模式：
+            * true: 新的状态排序到当前状态之前
+            * false: 新的状态排序到当前状态之后
+
+每当有新的同名状态添加到单位身上时触发此事件。若状态没有注册此事件，则发生叠加时按照返回`true`的情况处理。
+
+```lua
+    function mt:on_cover(new)
+        return true
+    end
+```
+
+#### on_finish
+完成事件
+
+每当状态因持续时间耗尽而被移除时触发此事件，会比[on_remove]事件先触发。
+
+```lua
+    function mt:on_finish()
+        -- 你的代码
+    end
+```
+
+#### on_pulse
+心跳事件
+
+根据[pulse]的设置，周期性触发的事件。
+
+```lua
+    function mt:on_pulse()
+        -- 你的代码
+    end
+```
+
+#### on_remove
+失去事件
+
+* 回调参数
+    * *new* (buff) - 新的状态
+
+每当状态被移除时触发此事件。若状态的[cover_type]为共存模式，且该状态被移除后有一个同名状态即将生效，那么那个状态就会被作为参数传入。你可以利用这个特性为即将生效的状态进行初始化或数据继承等操作。
+
+```lua
+    function mt:on_remove(new)
+        -- 你的代码
+    end
+```
+
+[同步方式]: /ac/option/sync
 [逻辑帧]: /ac/API/main?id=逻辑帧
-[构造]: /ac/API/buff/构造
+[构造]: /ac/API/buff?id=构造
 [ClientBuff]: 404
-[unit:add_buff]: /ac/API/unit/add_buff
-[on_pulse]: /ac/API/buff/事件/on_pulse
-[on_cover]: /ac/API/buff/事件/on_cover
-[cover_type]: /ac/API/buff/属性/cover_type
-[cover_max]: /ac/API/buff/属性/cover_max
-[source]: /ac/API/buff/属性/source
-[target]: /ac/API/buff/属性/target
+[unit:add_buff]: /ac/API/unit?id=add_buff
+[on_pulse]: /ac/API/buff?id=on_pulse
+[on_cover]: /ac/API/buff?id=on_cover
+[cover_type]: /ac/API/buff?id=cover_type
+[cover_max]: /ac/API/buff?id=cover_max
+[source]: /ac/API/buff?id=source
+[target]: /ac/API/buff?id=target
+[sync]: /ac/API/buff?id=sync
+[pulse]: /ac/API/buff?id=pulse
