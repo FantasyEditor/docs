@@ -1,7 +1,0 @@
-> pulse
-
-心跳
-
-执行[ai:on_idle]的周期，类型为`integer`，单位为`毫秒`。
-
-[ai:on_idle]: /ac/API/ai/事件/on_idle
