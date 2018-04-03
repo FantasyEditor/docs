@@ -1,6 +1,12 @@
 # 搜敌器
 搜敌器可以用来快速搜索可攻击的单位。搜敌器可以添加若干规则，一般某一类单位会共用一个搜敌器。
 
+* [构造](/ac/API/ai_attack/构造)
+* [add_team_threat](/ac/API/ai_attack/add_team_threat)
+* [add_threat](/ac/API/ai_attack/add_threat)
+* [add_type_threat](/ac/API/ai_attack/add_type_threat)
+* [ai_attack](/ac/API/ai_attack/ai_attack)
+
 #### 搜敌规则
 1. 搜索范围为 [攻击范围]+[搜敌范围] 的可以攻击的敌人。
 2. 将搜索到的敌人根据仇恨排序。
