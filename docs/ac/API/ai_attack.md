@@ -2,6 +2,13 @@
 + 搜敌器可以用来快速搜索可攻击的单位。
 + 搜敌器可以添加若干规则，一般某一类单位会共用一个搜敌器。
 
+## 搜敌规则
+1. 搜索范围为 [攻击范围]+[搜敌范围] 的可以攻击的敌人。
+2. 将搜索到的敌人根据仇恨排序。
+    + 优先使用[单位仇恨]，其次使用[队伍仇恨]，最后使用[类型仇恨]。
+    + 若仇恨为负数，则将单位排除。
+3. 搜索到仇恨最高的敌人。
+
 ## 例子
 这是一个小兵使用的搜敌器的例子：
 
@@ -29,3 +36,69 @@
         u:attack(target)
     end
 ```
+
+## 构造
+**`ac.ai_attack(data)` 创建搜敌器**
+
+* 参数
+    * data (table) - 自定义数据
+* 返回
+    * ai_attack (ai_attack) - 搜敌器
+
+## add_team_threat
+**`ai_attack:add_team_threat(team, threat)` 增加队伍仇恨**
+
++ 为指定队伍增加仇恨。
++ 若有队伍仇恨，则类型仇恨无效。
++ 仇恨相关见[搜敌规则]。
+
+* 参数
+    * team (integer) - 队伍id
+    * threat (integer) - 仇恨
+        + threat > 0: 队伍获得该等级的仇恨，不同等级的仇恨可以共存，最高的仇恨生效。清空队伍的负仇恨。
+        + threat == 0: 清空队伍的仇恨。
+        + threat < 0: 搜敌器将不会搜索到该队伍。清空队伍的正仇恨。
+
+## add_threat
+**`ai_attack:add_threat(unit, threat, time)` 增加单位仇恨**
+
++ 为指定单位增加仇恨。
++ 若有单位仇恨，则单位的队伍仇恨与类型仇恨无效。
++ 仇恨相关见[搜敌规则]。
+
+* 参数
+    * unit (unit) - 指定单位
+    * threat (integer) - 仇恨
+        + threat > 0: 单位获得该等级的仇恨，不同等级的仇恨可以共存，最高的仇恨生效。清空单位的负仇恨。
+        + threat == 0: 清空单位的仇恨。
+        + threat < 0: 搜敌器将不会搜索到该单位。清空单位的正仇恨。
+    * *time* (integer) - 持续时间(毫秒)。若不填时间则表示无限。
+
+## add_type_threat
+**`ai_attack:add_type_threat(type, threat)` 增加类型仇恨**
+
++ 为指定单位类型增加仇恨。
++ 仇恨相关见[搜敌规则]。
+
+* 参数
+    * type (string) - 单位类型，使用[UnitType]
+    * threat (integer) - 仇恨
+        + threat > 0: 单位类型获得该等级的仇恨，不同等级的仇恨可以共存，最高的仇恨生效。清空单位类型的负仇恨。
+        + threat == 0: 清空单位类型的仇恨。
+        + threat < 0: 搜敌器将不会搜索到该单位类型。清空单位类型的正仇恨。
+
+## ai_attack
+**`ai_attack(unit)` 进行搜敌**
+
++ 根据[搜敌规则]搜索敌人。
+
+* 返回
+    * *unit* (unit) - 搜索到的单位
+
+[攻击范围]: /ac/unit/attribute?id=攻击范围
+[搜敌范围]: /ac/unit/attribute?id=搜敌范围
+[搜敌规则]: /ac/API/ai_attack?id=搜敌规则
+[单位仇恨]: /ac/API/ai_attack?id=add_threat
+[队伍仇恨]: /ac/API/ai_attack?id=add_team_threat
+[类型仇恨]: /ac/API/ai_attack?id=add_type_threat
+[UnitType]: 404
