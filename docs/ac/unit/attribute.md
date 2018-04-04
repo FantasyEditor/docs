@@ -151,6 +151,7 @@
 [攻击范围]: /ac/unit/attribute?id=攻击范围
 [搜敌器]: /ac/api/ai_attack
 [同步方式]: /ac/option/sync
+[行为限制]: /ac/unit/restriction
 
 [Constant]: 404
 [英雄升级]: 404
@@ -164,6 +165,5 @@
 [普通攻击]: 404
 [攻击技能]: 404
 [视野]: 404
-[行为限制]: 404
 
 ### 相关API

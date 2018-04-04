@@ -2,7 +2,7 @@
   * [快速开始](/quickstart)
 * [单位](/ac/unit/main)
   * [属性](/ac/unit/attribute)
-  * [限制](/ac/unit/restriction)
+  * [行为限制](/ac/unit/restriction)
 * [玩家](/ac/player/main)
   * [属性](/ac/player/attribute)
 * [api](/ac/api/main)
