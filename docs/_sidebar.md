@@ -14,3 +14,4 @@
   * [buff](/ac/api/buff)
   * [capturer](/ac/api/capturer)
   * [cheat](/ac/api/cheat)
+  * [damage](/ac/api/damage)
