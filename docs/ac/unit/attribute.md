@@ -151,15 +151,15 @@
 [攻击范围]: /ac/unit/attribute?id=攻击范围
 [搜敌器]: /ac/api/ai_attack
 [行为限制]: /ac/unit/restriction
-[同步方式]: /ac/term/同步方式
-[视野]: /ac/term/视野
+[同步方式]: /ac/game/同步方式
+[视野]: /ac/game/视野
 [攻击技能]: /ac/skill/攻击技能
 [普通攻击]: /ac/skill/普通攻击
 [技能]: /ac/skill/技能
+[伤害结算]: /ac/game/伤害结算
 
 [Constant]: 404
 [英雄升级]: 404
-[伤害结算]: 404
 [伤害初始化]: 404
 [伤害前效果]: 404
 [伤害开始]: 404
