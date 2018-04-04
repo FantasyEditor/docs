@@ -99,5 +99,5 @@
 [skill:is_common_attack]: /ac/api/skill?id=is_common_attack
 [CommonSpellData]: 404
 [AttackSkill]: 404
-[攻击技能]: ac/term/攻击技能
+[攻击技能]: ac/skill/攻击技能
 [damage]: ac/api/damage
