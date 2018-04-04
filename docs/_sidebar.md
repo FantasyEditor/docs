@@ -9,6 +9,7 @@
   * [主英雄](/ac/term/主英雄)
   * [同步方式](/ac/term/同步方式)
   * [技能槽](/ac/term/技能槽)
+  * [攻击技能](/ac/term/攻击技能)
   * [马甲](/ac/term/马甲)
 * [api](/ac/api/main)
   * [ai_attack](/ac/api/ai_attack)
@@ -17,3 +18,4 @@
   * [buff](/ac/api/buff)
   * [capturer](/ac/api/capturer)
   * [cheat](/ac/api/cheat)
+  * [damage](/ac/api/damage)

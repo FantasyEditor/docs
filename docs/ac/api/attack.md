@@ -11,6 +11,25 @@
     attack:active_cd(max_cd)
 ```
 
+#### add_damage
+造成伤害
+
+* 参数
+    * source (unit) - 伤害来源
+    * target (unit) - 伤害目标
+    * damage (number) - 伤害值
+
+伤害的具体说明见[这里][damage]。
+
+```lua
+    attack:add_damage
+    {
+        source = source,
+        target = target,
+        damage = 100,
+    }
+```
+
 #### get_cd
 获取冷却
 
@@ -33,6 +52,8 @@
 
 #### is_common_attack
 是否是攻击技能
+
+攻击技能的定义见[这里][攻击技能]
 
 * 返回
     * result (boolean) - 结果
@@ -78,3 +99,5 @@
 [skill:is_common_attack]: /ac/api/skill?id=is_common_attack
 [CommonSpellData]: 404
 [AttackSkill]: 404
+[攻击技能]: ac/term/攻击技能
+[damage]: ac/api/damage
