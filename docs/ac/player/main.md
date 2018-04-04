@@ -4,3 +4,7 @@
 
 [config]: 404
 [玩家的英雄]: /ac/player/玩家的英雄
+
+# 索引 {docsify-ignore} 
+  * [属性](/ac/player/attribute)
+  * [玩家的英雄](/ac/player/玩家的英雄)
