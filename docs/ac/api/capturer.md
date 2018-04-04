@@ -57,6 +57,6 @@
 [unit:each_mover]: /ac/api/unit?id=each_mover
 [on_enter]: /ac/api/capturer?id=on_enter
 [on_leave]: /ac/api/capturer?id=on_leave
-[马甲]: /ac/option/马甲
+[马甲]: /ac/term/马甲
 [跟随]: /ac/api/unit?id=follow
 [运动]: /ac/api/mover
