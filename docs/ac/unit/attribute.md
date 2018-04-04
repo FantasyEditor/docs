@@ -150,12 +150,8 @@
 [魔法上限]: /ac/unit/attribute?id=魔法上限
 [攻击范围]: /ac/unit/attribute?id=攻击范围
 [搜敌器]: /ac/api/ai_attack
-<<<<<<< HEAD
-[同步方式]: /ac/option/sync
 [行为限制]: /ac/unit/restriction
-=======
 [同步方式]: /ac/term/同步方式
->>>>>>> ba60408d1dacfbe583ddf593a3bc3d957f90a0da
 
 [Constant]: 404
 [英雄升级]: 404
