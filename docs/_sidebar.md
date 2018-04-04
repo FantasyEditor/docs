@@ -4,6 +4,7 @@
   * [单位](/ac/unit/)
   * [玩家](/ac/player/)
   * [技能](/ac/skill/)
+  * [伤害](/ac/damage/)
   * [游戏](/ac/game/)
 * [api](/ac/api/main)
   * [ai_attack](/ac/api/ai_attack)

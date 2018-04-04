@@ -75,7 +75,7 @@
 [赤座灯里]: /ac/unit/restriction?id=赤座灯里
 [视野阻挡]: /ac/game/视野?id=视野阻挡
 [攻击技能]: /ac/skill/攻击技能
-[伤害结算]: /ac/game/伤害结算
+[伤害结算]: /ac/damage/伤害结算
 
 [运动]: 404
 [选取器]: 404
