@@ -261,7 +261,7 @@
     end
 ```
 
-[同步方式]: /ac/option/sync
+[同步方式]: /ac/term/同步方式
 [逻辑帧]: /ac/api/main?id=逻辑帧
 [构造]: /ac/api/buff?id=构造
 [ClientBuff]: 404
