@@ -95,9 +95,9 @@
     end
 ```
 
-[pulse]: /ac/API/ai?id=pulse
+[pulse]: /ac/api/ai?id=pulse
 [隐藏]: /ac/unit/restriction?id=隐藏
-[ac.game:disable_ai]: /ac/API/game?id=disable_ai
-[unit:add_ai]: /ac/API/unit?id=add_ai
-[ai:on_idle]: /ac/API/ai?id=on_idle
-[构造]: /ac/API/ai?id=pulse
+[ac.game:disable_ai]: /ac/api/game?id=disable_ai
+[unit:add_ai]: /ac/api/unit?id=add_ai
+[ai:on_idle]: /ac/api/ai?id=on_idle
+[构造]: /ac/api/ai?id=pulse
