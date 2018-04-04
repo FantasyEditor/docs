@@ -6,7 +6,7 @@
 * [玩家](/ac/player/main)
   * [属性](/ac/player/attribute)
 * 名词
-  * [主英雄](/ac/term/主英雄)
+  * [英雄](/ac/term/英雄)
   * [同步方式](/ac/term/同步方式)
   * [技能槽](/ac/term/技能槽)
   * [马甲](/ac/term/马甲)
