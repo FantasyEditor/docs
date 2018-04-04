@@ -15,3 +15,4 @@
   * [capturer](/ac/api/capturer)
   * [cheat](/ac/api/cheat)
   * [damage](/ac/api/damage)
+  * [effect](/ac/api/effect)
