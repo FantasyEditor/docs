@@ -74,7 +74,7 @@
     attack:stop()
 ```
 
-[skill:is_skill]: /ac/API/skill?id=is_skill
-[skill:is_common_attack]: /ac/API/skill?id=is_common_attack
+[skill:is_skill]: /ac/api/skill?id=is_skill
+[skill:is_common_attack]: /ac/api/skill?id=is_common_attack
 [CommonSpellData]: 404
 [AttackSkill]: 404

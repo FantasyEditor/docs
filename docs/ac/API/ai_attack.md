@@ -115,10 +115,10 @@
     local target = ai_attack(unit)
 ```
 
-[搜敌规则]: /ac/API/ai_attack/main?id=搜敌规则
+[搜敌规则]: /ac/api/ai_attack/main?id=搜敌规则
 [UnitType]: 404
-[单位仇恨]: /ac/API/ai_attack?id=add_threat
-[队伍仇恨]: /ac/API/ai_attack?id=add_team_threat
-[类型仇恨]: /ac/API/ai_attack?id=add_type_threat
+[单位仇恨]: /ac/api/ai_attack?id=add_threat
+[队伍仇恨]: /ac/api/ai_attack?id=add_team_threat
+[类型仇恨]: /ac/api/ai_attack?id=add_type_threat
 [攻击范围]: /ac/unit/attribute?id=攻击范围
 [搜敌范围]: /ac/unit/attribute?id=搜敌范围

@@ -262,15 +262,15 @@
 ```
 
 [同步方式]: /ac/option/sync
-[逻辑帧]: /ac/API/main?id=逻辑帧
-[构造]: /ac/API/buff?id=构造
+[逻辑帧]: /ac/api/main?id=逻辑帧
+[构造]: /ac/api/buff?id=构造
 [ClientBuff]: 404
-[unit:add_buff]: /ac/API/unit?id=add_buff
-[on_pulse]: /ac/API/buff?id=on_pulse
-[on_cover]: /ac/API/buff?id=on_cover
-[cover_type]: /ac/API/buff?id=cover_type
-[cover_max]: /ac/API/buff?id=cover_max
-[source]: /ac/API/buff?id=source
-[target]: /ac/API/buff?id=target
-[sync]: /ac/API/buff?id=sync
-[pulse]: /ac/API/buff?id=pulse
+[unit:add_buff]: /ac/api/unit?id=add_buff
+[on_pulse]: /ac/api/buff?id=on_pulse
+[on_cover]: /ac/api/buff?id=on_cover
+[cover_type]: /ac/api/buff?id=cover_type
+[cover_max]: /ac/api/buff?id=cover_max
+[source]: /ac/api/buff?id=source
+[target]: /ac/api/buff?id=target
+[sync]: /ac/api/buff?id=sync
+[pulse]: /ac/api/buff?id=pulse
