@@ -109,3 +109,5 @@ print(result) --> 3
 待补充
 
 [控制者]: /ac/api/player?id=get_owner
+[event_notify]: /ac/api/event?id=event_notify
+[event_dispatch]: /ac/api/event?id=event_dispatch

@@ -6,7 +6,7 @@
   * [技能](/ac/skill/)
   * [伤害](/ac/damage/)
   * [游戏](/ac/game/)
-* [api](/ac/api)
+* [api](/ac/api/)
   * [ai_attack](/ac/api/ai_attack)
   * [ai](/ac/api/ai)
   * [attack](/ac/api/attack)
@@ -16,3 +16,4 @@
   * [damage](/ac/api/damage)
   * [effect](/ac/api/effect)
   * [event](/ac/api/event)
+  * [game](/ac/api/game)
