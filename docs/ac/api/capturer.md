@@ -5,20 +5,20 @@
 
 弹道被捕获后，你可以使用[unit:each_mover]来找到弹道的[运动]。
 
-### 构建
+### 创建
 使用[unit:capturer]来创建弹道捕获器。
 
 ```lua
-    -- 将创建出来的弹道捕获器保存下来，之后需要给他注册事件
-    local capturer = unit:capturer
-    {
-        -- 弹道捕获器的范围
-        radius = 500,
-    }
+-- 将创建出来的弹道捕获器保存下来，之后需要给他注册事件
+local capturer = unit:capturer
+{
+    -- 弹道捕获器的范围
+    radius = 500,
+}
 ```
 
 ### 事件
-事件需要在[构造]弹道捕获器时注册。事件中的`self`表示捕获器对象。
+事件需要在[创建]弹道捕获器时注册。事件中的`self`表示捕获器对象。
 
 #### on_enter
 弹道进入事件
@@ -27,9 +27,9 @@
     * missile (unit) - 进入范围的弹道单位
 
 ```lua
-    function capturer:on_enter(missile)
-        -- 你的代码
-    end
+function capturer:on_enter(missile)
+    -- 你的代码
+end
 ```
 
 #### on_leave
@@ -39,9 +39,9 @@
     * missile (unit) - 进入范围的弹道单位
 
 ```lua
-    function capturer:on_leave(missile)
-        -- 你的代码
-    end
+function capturer:on_leave(missile)
+    -- 你的代码
+end
 ```
 
 ### 方法
@@ -50,7 +50,7 @@
 移除捕获器
 
 ```lua
-    capturer:remove()
+capturer:remove()
 ```
 
 [unit:capturer]: /ac/api/unit?id=capturer

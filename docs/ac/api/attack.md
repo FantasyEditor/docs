@@ -8,7 +8,7 @@
     * max_cd (number) - 冷却上限(秒)
 
 ```lua
-    attack:active_cd(max_cd)
+attack:active_cd(max_cd)
 ```
 
 #### add_damage
@@ -22,12 +22,12 @@
 伤害的具体说明见[这里][damage]。
 
 ```lua
-    attack:add_damage
-    {
-        source = source,
-        target = target,
-        damage = 100,
-    }
+attack:add_damage
+{
+    source = source,
+    target = target,
+    damage = 100,
+}
 ```
 
 #### get_cd
@@ -37,7 +37,7 @@
     * cd (number) - 冷却(秒)
 
 ```lua
-    local cd = attack:get_cd()
+local cd = attack:get_cd()
 ```
 
 #### get_name
@@ -47,7 +47,7 @@
     * name (string) - 攻击名
 
 ```lua
-    local name = attack:get_name()
+local name = attack:get_name()
 ```
 
 #### is_common_attack
@@ -61,7 +61,7 @@
 总是返回 `true` 。区别于[skill:is_common_attack]。
 
 ```lua
-    local result = attack:is_common_attack()
+local result = attack:is_common_attack()
 ```
 
 #### is_skill
@@ -73,7 +73,7 @@
 总是返回 `false` 。区别于[skill:is_skill]。
 
 ```lua
-    local result = attack:is_skill()
+local result = attack:is_skill()
 ```
 
 #### set_cd
@@ -85,14 +85,14 @@
 对不在冷却的攻击技能无效。冷却的有效范围是[0, 当前冷却上限]
 
 ```lua
-    attack:set_cd(cd)
+attack:set_cd(cd)
 ```
 
 #### stop
 打断攻击
 
 ```lua
-    attack:stop()
+attack:stop()
 ```
 
 [skill:is_skill]: /ac/api/skill?id=is_skill

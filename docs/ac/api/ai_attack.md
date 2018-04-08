@@ -8,35 +8,34 @@
     + 若仇恨为负数，则将单位排除。
 3. 搜索到仇恨最高的敌人。
 
-#### 例子
-这是一个小兵使用的搜敌器的例子：
+> 这是一个小兵使用的搜敌器的例子：
 
 ```lua
-    -- 创建搜敌器
-    local ai_attack = ac.ai_attack {}
-    -- 不攻击野怪，排除队伍3(我们假定野怪是队伍3)
-    ai_attack:add_team_threat(3, -1)
-    -- 最先攻击敌方小兵
-    ai_attack:add_type_threat('小兵', 3)
-    -- 其次攻击敌方召唤物
-    ai_attack:add_type_threat('召唤物', 2)
-    -- 再次攻击敌方建筑
-    ai_attack:add_type_threat('建筑', 1)
+-- 创建搜敌器
+local ai_attack = ac.ai_attack {}
+-- 不攻击野怪，排除队伍3(我们假定野怪是队伍3)
+ai_attack:add_team_threat(3, -1)
+-- 最先攻击敌方小兵
+ai_attack:add_type_threat('小兵', 3)
+-- 其次攻击敌方召唤物
+ai_attack:add_type_threat('召唤物', 2)
+-- 再次攻击敌方建筑
+ai_attack:add_type_threat('建筑', 1)
 ```
 
-假定我们现在拥有一个小兵`u`，让他进行一次搜敌并攻击搜索到的目标：
+> 假定我们现在拥有一个小兵`u`，让他进行一次搜敌并攻击搜索到的目标：
 
 ```lua
-    -- 这里的ai_attack是上面例子中创建出来的
-    local target = ai_attack(u)
-    -- 判断是不是搜索到了敌人
-    if target then
-        -- 命令小兵攻击敌人
-        u:attack(target)
-    end
+-- 这里的ai_attack是上面例子中创建出来的
+local target = ai_attack(u)
+-- 判断是不是搜索到了敌人
+if target then
+    -- 命令小兵攻击敌人
+    u:attack(target)
+end
 ```
 
-#### 构造
+#### 创建
 创建搜敌器
 
 * 参数
@@ -45,7 +44,7 @@
     * ai_attack (ai_attack) - 搜敌器
 
 ```lua
-    local ai_attack = ac.ai_attack {}
+local ai_attack = ac.ai_attack {}
 ```
 
 #### add_team_threat
@@ -61,12 +60,10 @@
 为指定队伍增加仇恨。若有[队伍仇恨]，则[类型仇恨]无效。仇恨相关见[搜敌规则]。
 
 ```lua
-    ai_attack:add_team_threat(team, threat)
+ai_attack:add_team_threat(team, threat)
 ```
 
 #### add_threat
-> add_threat(unit, threat, time)
-
 增加单位仇恨
 
 * 参数
@@ -80,12 +77,10 @@
 为指定单位增加仇恨。若有[单位仇恨]，则单位的[队伍仇恨]与[类型仇恨]均无效。仇恨相关见[搜敌规则]。
 
 ```lua
-    ai_attack:add_threat(unit, threat, time)
+ai_attack:add_threat(unit, threat, time)
 ```
 
 #### add_type_threat
-> add_type_threat(type, threat)
-
 增加类型仇恨
 
 * 参数
@@ -98,12 +93,10 @@
 为指定单位类型增加仇恨。仇恨相关见[搜敌规则]。
 
 ```lua
-    ai_attack:add_threat(type, threat)
+ai_attack:add_threat(type, threat)
 ```
 
 #### ai_attack
-> ai_attack(unit)
-
 进行搜敌
 
 * 返回
@@ -112,7 +105,7 @@
 根据[搜敌规则]搜索敌人。
 
 ```lua
-    local target = ai_attack(unit)
+local target = ai_attack(unit)
 ```
 
 [搜敌规则]: /ac/api/ai_attack/main?id=搜敌规则

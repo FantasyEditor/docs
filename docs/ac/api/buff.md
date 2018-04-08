@@ -3,35 +3,34 @@
 
 当你制作一个复杂的技能效果时，它应该是有许多状态组合而成的。
 
-### 例子
-制作一个状态，单位在获得该状态5秒后失去该状态。
+> 制作一个状态，单位在获得该状态5秒后失去该状态。
 
 ```lua
-    -- 给状态一个合适的名字，以便在其他地方添加这个状态
-    local mt = ac.buff['持续5秒的状态']
-    -- 设置属性[持续时间]为5秒
-    mt.time = 5
+-- 给状态一个合适的名字，以便在其他地方添加这个状态
+local mt = ac.buff['持续5秒的状态']
+-- 设置属性[持续时间]为5秒
+mt.time = 5
 ```
 
-你可以在合适的时候给单位添加状态，例如我们有个单位`u`：
+> 你可以在合适的时候给单位添加状态，例如我们有个单位`u`：
 
 ```lua
-    -- 添加状态，将状态对象保存在变量[buff]中
-    local buff = u:add_buff '持续5秒的状态'
-    {
-        -- 关联技能
-        skill = skill,
-    }
+-- 添加状态，将状态对象保存在变量[buff]中
+local buff = u:add_buff '持续5秒的状态'
+{
+    -- 关联技能
+    skill = skill,
+}
 ```
 
-你可以再次修改这个状态的属性：
+> 你可以再次修改这个状态的属性：
 
 ```lua
-    -- 将刚刚添加的状态的剩余时间改为10秒
-    buff:set_remaining(10)
+-- 将刚刚添加的状态的剩余时间改为10秒
+buff:set_remaining(10)
 ```
 
-### 构造
+### 创建
 创建/获取状态
 
 * 参数
@@ -42,48 +41,48 @@
 如果[ClientBuff]中有同名的状态定义，则会包含定义的属性。使用[unit:add_buff]来给单位添加状态。
 
 ```lua
-    -- 将创建的状态保存下来，你之后需要为它进行设置，以及注册事件
-    local mt = ac.buff[name]
+-- 将创建的状态保存下来，你之后需要为它进行设置，以及注册事件
+local mt = ac.buff[name]
 ```
 
 ### 设置
-只能在[构造]时设置：
+只能在[创建]时设置：
 
-#### cover_global
+#### *cover_global*
 全局覆盖类型
 
 决定如何视为同名状态，可以是以下的值（integer）：
 * `0`：必须名字和来源都相同才视为同名状态,触发覆盖。这是默认值。
 * `1`：只要名字相同就会视为同名状态,触发覆盖
 
-#### cover_max
+#### *cover_max*
 最大生效数量
 
 当单位身上有多个同名状态时，最多可以同时生效的状态数量（integer）。这个值默认为0，表示无限制。只有当[cover_type]为共存模式时才有意义。关于同名状态的排序方式见[on_cover]。
 
-#### cover_type
+#### *cover_type*
 共存模式
 
 决定了单位获得多个同名状态时的行为，可以是以下的值（integer）：
-* `0`：独占模式，单位只能同时保留一个同名状态。[on_cover]可以决定哪个状态保留下来。
+* `0`：独占模式，单位只能同时保留一个同名状态。[on_cover]可以决定哪个状态保留下来。这是默认行为。
 * `1`：共存模式，单位可以同时保留多个同名状态。[on_cover]可以决定这些状态的排序，以便通过[cover_max]来只让部分状态生效。
 
-#### keep
+#### *keep*
 死亡后保留
 
 决定了单位死亡后，状态是否继续保留；以及单位死亡时是否能添加该状态。可以是以下的值（boolean）：
 * `true`：单位死亡时保留状态，状态也可以添加给死亡的单位。
 * `false`：单位死亡时移除状态，状态无法添加给死亡的单位。这是默认值。
 
-#### sync
+#### *sync*
 同步方式
 
 这个值决定了状态可以被哪些人看见，见[同步方式]，默认值为`none`。同步方式的参照单位为状态的[source]，而不是状态的[target]。
 
 ### 属性
-可以在[构造]或[unit:add_buff]时设置：
+可以在[创建]或[unit:add_buff]时设置：
 
-#### pulse
+#### *pulse*
 心跳
 
 触发[on_pulse]事件的频率（number），单位为秒。这个值的精度受到[逻辑帧]的影响。默认值为1帧。
@@ -93,7 +92,7 @@
 
 在[unit:add_buff]时设置。
 
-#### source
+#### *source*
 来源
 
 状态的来源（unit)，在[unit:add_buff]时设置。这会影响状态的[sync]属性的参照物。如果不设置，则为[unit:add_buff]时的对象。
@@ -103,13 +102,13 @@
 
 状态的目标（unit)。该属性不需要设置，为[unit:add_buff]时的对象。
 
-#### time
+#### *time*
 持续时间
 
 状态会在经过此时间后自动移除。这个值类型为（number），默认为一个非常巨大的值，表示持续无限时间。
 
 ### 自定义属性
-你可以在[构造]或[unit:add_buff]时给状态添加任何自定义的属性（当然不能重名），之后便可以从状态对象中将其读出，以便实现自定义功能。
+你可以在[创建]或[unit:add_buff]时给状态添加任何自定义的属性（当然不能重名），之后便可以从状态对象中将其读出，以便实现自定义功能。
 
 ### 方法
 
@@ -122,7 +121,7 @@
 如果状态的属性允许，层数会显示在状态图标上。
 
 ```lua
-    buff:add_stack(count)
+buff:add_stack(count)
 ```
 
 #### get_pulse
@@ -132,7 +131,7 @@
     * pulse (number) - 触发[on_pulse]事件的周期
 
 ```lua
-    local pulse = buff:get_pulse()
+local pulse = buff:get_pulse()
 ```
 
 #### get_remaining
@@ -142,7 +141,7 @@
     * time (number) - 状态的剩余持续时间
 
 ```lua
-    local time = buff:get_remaining()
+local time = buff:get_remaining()
 ```
 
 #### get_stack
@@ -152,14 +151,14 @@
     * count (integer) - 状态的层数
 
 ```lua
-    local count = buff:get_stack()
+local count = buff:get_stack()
 ```
 
 #### remove
 移除状态
 
 ```lua
-    buff:remove()
+buff:remove()
 ```
 
 #### set_pulse
@@ -169,7 +168,7 @@
     * pulse (number) - 触发[on_pulse]事件的周期
 
 ```lua
-    buff:set_pulse(pulse)
+buff:set_pulse(pulse)
 ```
 
 #### set_remaining
@@ -179,7 +178,7 @@
     * time (number) - 状态的剩余持续时间
 
 ```lua
-    buff:set_remaining(time)
+buff:set_remaining(time)
 ```
 
 #### set_stack
@@ -189,11 +188,11 @@
     * count (integer) - 状态的层数
 
 ```lua
-    buff:set_stack(count)
+buff:set_stack(count)
 ```
 
 ### 事件
-事件需要在[构造]状态时注册。事件中的`self`表示状态对象。
+事件需要在[创建]状态时注册。事件中的`self`表示状态对象。
 
 #### on_add
 获得事件
@@ -201,9 +200,9 @@
 每当单位获得该状态时触发此事件。
 
 ```lua
-    function mt:on_add()
-        -- 你的代码
-    end
+function mt:on_add()
+    -- 你的代码
+end
 ```
 
 #### on_cover
@@ -223,9 +222,9 @@
 每当有新的同名状态添加到单位身上时触发此事件。若状态没有注册此事件，则发生叠加时按照返回`true`的情况处理。
 
 ```lua
-    function mt:on_cover(new)
-        return true
-    end
+function mt:on_cover(new)
+    return true
+end
 ```
 
 #### on_finish
@@ -234,9 +233,9 @@
 每当状态因持续时间耗尽而被移除时触发此事件，会比[on_remove]事件先触发。
 
 ```lua
-    function mt:on_finish()
-        -- 你的代码
-    end
+function mt:on_finish()
+    -- 你的代码
+end
 ```
 
 #### on_pulse
@@ -245,9 +244,9 @@
 根据[pulse]的设置，周期性触发的事件。
 
 ```lua
-    function mt:on_pulse()
-        -- 你的代码
-    end
+function mt:on_pulse()
+    -- 你的代码
+end
 ```
 
 #### on_remove
@@ -259,14 +258,14 @@
 每当状态被移除时触发此事件。若状态的[cover_type]为共存模式，且该状态被移除后有一个同名状态即将生效，那么那个状态就会被作为参数传入。你可以利用这个特性为即将生效的状态进行初始化或数据继承等操作。
 
 ```lua
-    function mt:on_remove(new)
-        -- 你的代码
-    end
+function mt:on_remove(new)
+    -- 你的代码
+end
 ```
 
 [同步方式]: /ac/game/同步方式
 [逻辑帧]: /ac/api/main?id=逻辑帧
-[构造]: /ac/api/buff?id=构造
+[创建]: /ac/api/buff?id=创建
 [ClientBuff]: 404
 [unit:add_buff]: /ac/api/unit?id=add_buff
 [on_pulse]: /ac/api/buff?id=on_pulse

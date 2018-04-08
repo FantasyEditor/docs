@@ -23,11 +23,11 @@
 当使用[reload]进行重载脚本时会触发此事件。你可以使用这个方法注册2个事件，分别在重载开始于重载结束时触发。利用重载开始事件，你可以在重载开始时移除脚本中创建的各种对象，避免重载脚本后重复注册。利用重载结束事件，你可以在重载结束时对脚本的环境进行一些初始化或还原。
 
 ```lua
-    ac.cheat.on_reload(function ()
-        -- 重载开始的处理代码
-    end, function ()
-        -- 重载结束的处理代码
-    end)
+ac.cheat.on_reload(function ()
+    -- 重载开始的处理代码
+end, function ()
+    -- 重载结束的处理代码
+end)
 ```
 
 #### is_reloading
@@ -39,11 +39,11 @@
 重载脚本时会重新执行一次脚本代码，有时你需要根据当前是不是因为重载而执行代码进行差异化处理。使用这个函数可以进行区分。
 
 ```lua
-    if ac.cheat.is_reloading() then
-        -- 重载时的差异处理
-    else
-        -- 正常加载时的处理
-    end
+if ac.cheat.is_reloading() then
+    -- 重载时的差异处理
+else
+    -- 正常加载时的处理
+end
 ```
 
 #### reload
@@ -54,7 +54,7 @@
 1. 重载开始：
     触发[on_reload]的重载开始事件。
 2. 重新加载脚本：
-    所有使用[include]加载的脚本会依次重新读取并加载。在重载过程中，每个文件智慧被加载一次。当重载的脚本中包含[技能构造]与[状态构造]时，之前定义的技能或状态定义会被清空，一遍你重新添加方法与属性。
+    所有使用[include]加载的脚本会依次重新读取并加载。在重载过程中，每个文件智慧被加载一次。当重载的脚本中包含[技能创建]与[状态创建]时，之前定义的技能或状态定义会被清空，一遍你重新添加方法与属性。
 3. 重载所有玩家的[英雄]，对每个英雄执行：
     1. 移除英雄的所有技能与状态
     2. 回满英雄的[生命]与[魔法]
@@ -65,7 +65,7 @@
     触发[on_reload]的重载结束事件。
 
 ```lua
-    ac.cheat.reload()
+ac.cheat.reload()
 ```
 
 !> 该功能在正式环境中不可用
@@ -76,8 +76,8 @@
 [reload]: ac/api/cheat?=reload
 [on_reload]: ac/api/cheat?=on_reload
 [is_reloading]: ac/api/cheat?=is_reloading
-[技能构造]: ac/api/skill?=构造
-[状态构造]: ac/api/buff?=构造
+[技能创建]: ac/api/skill?=创建
+[状态创建]: ac/api/buff?=创建
 [生命]: ac/unit/attribute?=生命
 [魔法]: ac/unit/attribute?=魔法
 [英雄]: ac/term/英雄
