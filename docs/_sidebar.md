@@ -17,3 +17,4 @@
   * [effect](/ac/api/effect)
   * [event](/ac/api/event)
   * [game](/ac/api/game)
+  * [lightning](/ac/api/lightning)

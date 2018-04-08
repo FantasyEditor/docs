@@ -4,7 +4,7 @@
 使用[unit:effect]或[player:effect]来创建特效。
 
 ```lua
-unit:effect
+local effect = unit:effect
 {
     model = '特效名称',
     target = {point, 100},
