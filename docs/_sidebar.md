@@ -19,3 +19,4 @@
   * [game](/ac/api/game)
   * [lightning](/ac/api/lightning)
   * [minimap](/ac/api/minimap)
+  * [mover](/ac/api/mover)
