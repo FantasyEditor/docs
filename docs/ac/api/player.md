@@ -252,7 +252,7 @@ local lightning = player:lightning
 #### lock_camera
 锁定镜头
 
-令玩家无法通过客户端操作改变镜头状态。使用[unlock_camera]解锁镜头。
+锁定镜头后，玩家无法通过客户端操作改变镜头状态，[move_camera]无效。使用[unlock_camera]解锁镜头。
 
 ```lua
 player:lock_camera()
@@ -294,6 +294,173 @@ player:message
 }
 ```
 
+#### message_box
+弹框消息
+
+* 参数
+    * text (string) - 消息内容
+
+```lua
+player:message_box('消息内容')
+```
+
+#### move_camera
+移动镜头
+
+* 参数
+    * target (point) - 镜头目标
+
+```lua
+player:move_camera(point)
+```
+
+#### play_music
+播放音乐
+
+* 参数
+    * path (string) - 音乐路径
+
+```lua
+player:play_music(path)
+```
+
+#### play_sound
+播放音效
+
+* 参数
+    * path (string) - 音效路径
+
+```lua
+player:play_sound(path)
+```
+
+#### set
+设置属性
+
+* 参数
+    * state (string) - 属性名称
+    * value (number) - 数值
+
+玩家属性说明见[这里][玩家属性]
+
+```lua
+player:set('金钱', 100)
+```
+
+#### set_afk
+设置为挂机
+
+```lua
+player:set_afk()
+```
+
+#### set_camera
+设置镜头
+
+* 参数
+    * data (table) - 镜头状态
+        + position (point/table) - 镜头目标位置，可以直接使用`point`，也可以使用`{x, y, z}`来表示一个三维的位置。
+        + *rotation* (table) - 镜头旋转，使用`{rx, ry, rz}`来表示镜头在3个坐标轴上的旋转，默认为`{0, 0, 0}`。
+        + *focus_distance* (number) - 摄像机与镜头目标之间的距离，默认为0。
+        + *time* (integer) - 变换时间，默认为0，单位为毫秒。
+
+当变换时间为0时会镜头立即变换到新的状态，否则镜头会在变换时间内平滑运动至新的状态。使用该方法会立即中断上次的镜头变换。
+
+```lua
+player:set_camera
+{
+    position = {x, y, z},
+    rotation = {rx, ry, rz},
+    focus_distance = 1000,
+    time = 2000,
+}
+```
+
+#### set_hero
+设置英雄
+
+* 参数
+    * hero (unit) - [玩家的英雄]
+
+```lua
+player:set_hero(hero)
+```
+
+#### set_team_id
+设置队伍ID
+
+* 参数
+    * id (integer) - 队伍ID
+
+```lua
+player:set_team_id(1)
+```
+
+#### shake_camera
+屏幕震动
+
+* 参数
+    * type (integer) - 震动类型
+
+目前支持的震动类型为`0`，`1`，`2`，`3`。
+
+```lua
+player:shake_camera(0)
+```
+
+#### unlock_camera
+解锁镜头
+
+```lua
+player:unlock_camera()
+```
+
+#### user_agent
+用户客户端
+
+* 返回
+    * agent (string) - 客户端
+
+用于分辨用户使用的客户端，该值由客户端上传。
+
+```lua
+local agent = player:user_agent()
+```
+
+#### user_id
+用户ID
+
+* 返回
+    * id (integer) - 用户ID
+
+```lua
+local id = player:user_id()
+```
+
+#### user_info
+用户信息
+
+* 参数
+    * type (string) - 类型
+* 返回
+    * list (table) - 信息列表
+
+类型为`英雄`时，返回用户可用英雄的名单；类型`免费英雄`时，返回用户免费英雄的名单；类型为`养成`时，返回用户使用的符卡名单。
+
+```lua
+local list = player:user_info '免费英雄'
+```
+
+#### user_level
+用户等级
+
+* 返回
+    * level (integer) - 平台等级
+
+```lua
+local level = player:user_level()
+```
+
 [玩家属性]: /ac/player/attribute
 [create_illusion]: /ac/api/unit?id=create_illusion
 [单位-初始化]: 404
@@ -304,5 +471,6 @@ player:message
 [玩家的英雄]: /ac/player/玩家的英雄
 [lock_camera]: /ac/api/player?id=lock_camera
 [unlock_camera]: /ac/api/player?id=unlock_camera
+[move_camera]: /ac/api/player?id=move_camera
 [消息格式化]: /ac/player/消息格式化
 
