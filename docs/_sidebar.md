@@ -24,3 +24,4 @@
   * [point](/ac/api/point)
   * [region](/ac/api/region)
   * [rpc](/ac/api/rpc)
+  * [selector](/ac/api/selector)
