@@ -21,3 +21,4 @@
   * [minimap](/ac/api/minimap)
   * [mover](/ac/api/mover)
   * [player](/ac/api/player)
+  * [point](/ac/api/point)
