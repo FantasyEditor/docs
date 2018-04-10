@@ -73,11 +73,11 @@ ac.cheat.reload()
 ### 作弊功能
 待补充
 
-[reload]: ac/api/cheat?=reload
-[on_reload]: ac/api/cheat?=on_reload
-[is_reloading]: ac/api/cheat?=is_reloading
-[技能创建]: ac/api/skill?=创建
-[状态创建]: ac/api/buff?=创建
+[reload]:/ac/api/cheat?=reload
+[on_reload]:/ac/api/cheat?=on_reload
+[is_reloading]:/ac/api/cheat?=is_reloading
+[技能创建]:/ac/api/skill?=创建
+[状态创建]:/ac/api/buff?=创建
 [生命]: ac/unit/attribute?=生命
 [魔法]: ac/unit/attribute?=魔法
 [英雄]: ac/term/英雄

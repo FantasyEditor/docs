@@ -100,4 +100,4 @@ attack:stop()
 [CommonSpellData]: 404
 [AttackSkill]: 404
 [攻击技能]: ac/skill/攻击技能
-[damage]: ac/api/damage
+[damage]:/ac/api/damage
