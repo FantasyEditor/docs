@@ -108,7 +108,7 @@ ai_attack:add_threat(type, threat)
 local target = ai_attack(unit)
 ```
 
-[搜敌规则]: /ac/api/ai_attack/main?id=搜敌规则
+[搜敌规则]: /ac/api/ai_attack?id=搜敌规则
 [UnitType]: 404
 [单位仇恨]: /ac/api/ai_attack?id=add_threat
 [队伍仇恨]: /ac/api/ai_attack?id=add_team_threat

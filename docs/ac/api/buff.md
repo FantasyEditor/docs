@@ -38,7 +38,7 @@ buff:set_remaining(10)
 * 返回
     + buff (buff) - 状态数据表
 
-如果[ClientBuff]中有同名的状态定义，则会包含定义的属性。使用[unit:add_buff]来给单位添加状态。
+如果[ClientBuff]中有同名的状态定义，则会包含定义的属性。使用[add_buff]来给单位添加状态。
 
 ```lua
 -- 将创建的状态保存下来，你之后需要为它进行设置，以及注册事件
@@ -267,7 +267,7 @@ end
 [逻辑帧]: /ac/api/main?id=逻辑帧
 [创建]: /ac/api/buff?id=创建
 [ClientBuff]: 404
-[unit:add_buff]: /ac/api/unit?id=add_buff
+[add_buff]: /ac/api/unit?id=add_buff
 [on_pulse]: /ac/api/buff?id=on_pulse
 [on_cover]: /ac/api/buff?id=on_cover
 [cover_type]: /ac/api/buff?id=cover_type
