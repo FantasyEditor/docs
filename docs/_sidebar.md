@@ -23,3 +23,4 @@
   * [player](/ac/api/player)
   * [point](/ac/api/point)
   * [region](/ac/api/region)
+  * [rpc](/ac/api/rpc)
