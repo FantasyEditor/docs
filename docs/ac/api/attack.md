@@ -53,19 +53,17 @@ local name = attack:get_name()
 #### is_common_attack
 是否是攻击技能
 
-攻击技能的定义见[这里][攻击技能]
-
 * 返回
     * result (boolean) - 结果
 
-总是返回 `true` 。区别于[skill:is_common_attack]。
+攻击技能的定义见[这里][攻击技能]。总是返回 `true` 。区别于[skill:is_common_attack]。
 
 ```lua
 local result = attack:is_common_attack()
 ```
 
 #### is_skill
-是否是技能对象
+是否是技能
 
 * 返回
     * result (boolean) - 结果
