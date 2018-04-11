@@ -31,3 +31,4 @@
   * [template_buff](/ac/api/template_buff)
   * [test](/ac/api/test)
   * [timer](/ac/api/timer)
+  * [trigger](/ac/api/trigger)
