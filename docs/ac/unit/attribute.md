@@ -4,7 +4,7 @@
 
 > 实际值 = 基础值 * (1 + 百分比 / 100)
 
-理解这点，才能明白修改单位的三个api`set`，`get`，`add`内在区别。
+理解这点，才能明白修改单位的三个api[set]，[get]，[add]内在区别。
 
 ``` lua
   -- 获取的是 实际值
@@ -165,3 +165,7 @@
 [伤害开始]: 404
 [伤害击杀]: 404
 [自定义属性]: 404
+
+[set]: /ac/api/unit?id=set
+[get]: /ac/api/unit?id=get
+[add]: /ac/api/unit?id=add

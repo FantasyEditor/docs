@@ -1,0 +1,444 @@
+# 单位
+单位的说明见[这里][单位]。
+
+#### add
+增加属性
+
+* 参数
+    * state (string) - [单位属性]
+    * value (number) - 数值
+
+```lua
+-- 攻击增加50点
+unit:add('攻击', 50)
+-- 攻击增加50%
+unit:add('攻击%', 50)
+```
+
+#### add_ai
+添加AI
+
+* 参数1
+    * name (string) - AI名称
+* 参数2
+    * data (table) - AI数据
+
+AI的说明见[这里][ai]。
+
+```lua
+unit:add_ai '小兵'
+{
+    -- 自定义数据
+}
+```
+
+#### add_animation
+添加动画
+
+* 参数
+    * name (string) - 动画名称
+    * *speed* (number) - 动画播放速度，默认为1.0
+    * *loop* (boolean) - 循环播放，默认为`false`
+
+```lua
+unit:add_animation('动画名称', 2.0, true)
+```
+
+#### add_buff
+添加状态
+
+* 参数1
+    * name (string) - 状态名称
+    * *delay* (number) - 生效延迟（秒）
+* 参数2
+    * data (table) - [状态属性]
+* 返回
+    * buff (buff) - 状态
+
+状态的详细说明见[这里][buff]。指定生效延迟后，状态会在延迟时间后生效，但会立即返回状态，因此可以操作这个还未生效的状态，包括移除它。
+
+```lua
+local buff = unit:add_buff('状态名称', 1000)
+{
+    skill = skill,
+}
+```
+
+#### add_height
+增加高度
+
+* 参数
+    * height (name) - 高度
+
+指的是单位距离地面的高度
+
+```lua
+unit:add_height(100)
+```
+
+#### add_provide_sight
+提供视野
+
+* 参数
+    * team (integer) - 队伍ID
+
+令单位的视野提供给指定队伍。视野的说明见[这里][视野]。
+
+```lua
+unit:add_provide_sight(1)
+```
+
+#### add_resource
+增加能量
+
+* 参数
+    * type (string) - [能量类型][能量]
+    * value (number) - 数值
+
+```lua
+unit:add_resource('怒气', 100)
+```
+
+#### add_restriction
+增加行为限制
+
+* 参数
+    * type (string) - [行为限制]
+
+```lua
+unit:add_restriction '无敌'
+```
+
+#### add_sight
+添加可见形状
+
+* 参数
+    * sight (sight) - [可见形状]
+* 返回
+    * *sight_handle* (sight_handle) - [可见形状对象][可见形状]
+
+```lua
+local sight_handle = unit:add_sight(sight)
+```
+
+> 有个体型巨大的单位，希望能在它的轮廓进入视野时就能看到他。
+
+```lua
+-- 在单位位置创建一个半径500的圆形可见形状
+local sight = ac.sight_range(unit:get_point(), 500)
+-- 将可见形状添加给单位
+local sight_handle = unit:add_sight(sight)
+```
+
+> 之后不需要这个可见形状了
+
+```lua
+if sight_handle then
+    sight_handle:remove()
+end
+```
+
+#### add_skill
+添加技能
+
+* 参数
+    * name (string) - 技能名称
+    * type (string) - [技能类型]
+    * *slot* （integer) - 技能格子
+* 返回
+    * *skill* (skill) - 技能
+
+每个类型的技能格子从0开始，最大为99。指定格子时，这个格子上已经有技能的话会添加失败；不指定格子时，会找一个最小的空格。
+
+```lua
+unit:add_skill('技能名称', '英雄', 1)
+```
+
+#### attack
+攻击
+
+* 参数
+    * target (unit) - 攻击目标
+* 返回
+    * valid (boolean) - 是否有效
+
+```lua
+local valid = unit:attack(target)
+```
+
+#### attack_skill
+获取攻击技能
+
+* 返回
+    * attack (attack/skill) - 当前[攻击技能]
+
+```lua
+local attack = unit:attack_skill()
+```
+
+#### blink
+移动
+
+* 参数
+    * target (point) - 目标位置
+* 返回
+    * result (boolean) - 是否成功
+
+若目标位置有阻挡且单位不能无视阻挡，会将该单位再次移动到附近没有阻挡的位置。
+
+```lua
+local result = unit:blink(target)
+```
+
+#### can_attack
+是否可以攻击目标
+
+* 参数
+    * target (unit) - 目标单位
+* 返回
+    * result (boolean) - 结果
+
+```lua
+local result = unit:can_attack(target)
+```
+
+#### capturer
+创建弹道捕获器
+
+* 参数
+    * data (table) - [弹道捕获器属性]
+* 返回
+    * capturer (capturer) - [弹道捕获器]
+
+```lua
+local capturer = unit:capturer
+{
+    radius = 500,
+}
+```
+
+#### cast
+使用技能
+
+* 参数
+    * name (string) - 技能名
+    * *target* - 目标
+    * *data* (table) - 数据
+* 返回
+    * valid (boolean) - 是否合法
+
+`target`由技能属性决定，如果使用了错误的目标（比如无目标技能却传入了单位作为目标）会导致技能使用失败。`data`中的数据会被设置到施法中。
+
+```lua
+local valid = unit:cast('技能名', target, data)
+```
+
+#### clean_command
+清空命令队列
+
+```lua
+unit:clean_command()
+```
+
+#### create_illusion
+创建幻象
+
+* 参数
+    * where (point) - 创建位置
+    * face (number) - 朝向
+    * *dest* (unit) - 镜像复制目标
+* 返回
+    * *illusion* (unit) - 幻象
+
+镜像复制目标默认为对象自己。复制单位的流程如下：
+1. 触发[单位-初始化]事件
+2. 复制技能
+3. 复制单位属性
+4. 触发[单位-创建]事件
+
+也可以用[create_unit]实现。
+
+```lua
+local illusion = unit:create_illusion(where, face, dest)
+```
+
+#### create_unit
+创建单位
+
+* 参数
+    * name (string/unit) - 单位名字/要复制的单位
+    * where (point) - 创建位置
+    * face (number) - 面朝方向
+    * *on_init* (function) - 初始化函数
+* 返回
+    * unit (unit) - 单位
+
+创建出来的单位属于`unit`。如果`name`是一个字符串，那么会创建名称为`name`的单位。如果`name`是一个单位，那么会复制该单位，目前该行为等同于[create_illusion]。单位创建后会最先执行`on_init`，你可以在这里给单位初始化一些数据。创建单位的流程如下：
++ 执行`on_init`
++ 触发[单位-初始化]事件
++ 添加技能
++ 触发[单位-创建]事件
+
+```lua
+local unit = player:create_unit('鹿目圆香', where, face, function (unit)
+    -- 对unit进行初始化设置
+end)
+```
+
+#### current_skill
+获取当前施放的技能
+
+* 返回
+    * *skill* (skill) - 施法
+
+获取到的技能是施法。如果当前不在放技能，则返回`nil`。
+
+```lua
+local skill = unit:current_skill()
+```
+
+#### disable_ai
+禁用AI
+
+令单位不再执行[AI][ai]。
+
+```lua
+unit:disable_ai()
+```
+
+#### each_buff
+遍历状态
+
+* 参数
+    * *name* (string) - 状态名
+* 遍历
+    * buff (buff) - 遍历到的状态
+
+当指定了`name`后只会遍历到该名称的状态，否则遍历所有状态。
+
+```lua
+for buff in unit:each_buff '状态名' do
+    -- buff为遍历到的状态
+end
+```
+
+#### each_mover
+遍历运动
+
+* 遍历
+    * mover (mover) - 遍历到的运动
+
+```lua
+for mover in unit:each_mover() do
+    -- mover为遍历到的运动
+end
+```
+
+#### each_skill
+遍历技能
+
+* 参数
+    * *type* (string) - [技能类型]
+* 遍历
+    * skill (skill) - 遍历到的技能
+
+如果指定了`type`，则会遍历到所有技能类型为`type`的技能，不包括0级技能；否则会遍历到所有技能，包括0级技能。
+
+```lua
+for skill in unit:each_skill '英雄' do
+    -- skill为遍历到的技能
+end
+```
+
+#### effect
+创建特效
+
+* 参数
+    * data (table) - [特效属性]
+* 返回
+    * *effect* (effect) - 特效
+
+特效相关说明见[这里][effect]。
+
+```lua
+local effect = unit:effect
+{
+    model = '特效名',
+    target = point,
+}
+```
+
+#### enable_ai
+启用AI
+
+```lua
+unit:enable_ai()
+```
+
+#### event
+注册事件
+
+* 参数
+    * name (string) - 事件名
+    * callback (function) - 事件函数
+* 返回
+    * trigger (trigger) - 触发器
+* 事件参数
+    * trigger (trigger) - 触发器
+    * ... (...) - 自定义数据
+
+这是对`ac.event_register`方法的封装，你可以在[这里][event]看到详细说明。
+
+```lua
+local trigger = unit:event('单位-死亡', function (trigger, unit, name)
+    -- 你的代码
+end)
+```
+
+#### event_dispatch
+触发事件
+
+* 参数
+    * name (string) - 事件名
+    * ... (...) - 自定义数据
+
+这是对`ac.event_dispatch`方法的封装，你可以在[这里][event]看到详细说明。
+
+```lua
+unit:event_dispatch('自定义事件', ...)
+```
+
+#### event_notify
+触发事件
+
+* 参数
+    * name (string) - 事件名
+    * ... (...) - 自定义数据
+
+这是对`ac.event_notify`方法的封装，你可以在[这里][event]看到详细说明。
+
+```lua
+player:event_notify('自定义事件', ...)
+```
+
+
+[单位]: /ac/unit
+[单位属性]: /ac/unit/attribute
+[行为限制]: /ac/unit/restriction
+[可见形状]: /ac/game/可见形状
+[技能类型]: /ac/skill/技能类型
+[攻击技能]: /ac/skill/攻击技能
+[视野]: /ac/game/视野
+[能量]: /ac/unit/能量
+[状态属性]: /ac/api/buff?id=属性
+[特效属性]: /ac/api/effect?id=属性
+[ai]: /ac/api/ai
+[buff]: /ac/api/buff
+[attack]: /ac/api/attack
+[effect]: /ac/api/effect
+[弹道捕获器]: /ac/api/capturer
+[弹道捕获器属性]: /ac/api/capturer?id=属性
+[单位-初始化]: 404
+[单位-创建]: 404
+[create_unit]: /ac/api/unit?id=create_unit
+[create_illusion]: /ac/api/unit?id=create_illusion

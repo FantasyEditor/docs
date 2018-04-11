@@ -7,3 +7,4 @@
 # 索引 {docsify-ignore}
   * [属性](/ac/unit/attribute)
   * [行为限制](/ac/unit/restriction)
+  * [能量](/ac/unit/能量)

@@ -18,7 +18,7 @@
     end
 ```
 
-> 你可以在合适的时候给单位添加AI，例如我们有个单位`u`：
+> 使用[add_ai]给单位添加AI，例如我们有个单位`u`：
 
 ```lua
 u:add_ai '空闲时搜敌' {}
@@ -31,7 +31,7 @@ u:add_ai '空闲时搜敌' {}
 * 返回
     * ai (ai) - AI对象
 
-使用[unit:add_ai]来添加AI。
+使用[add_ai]来添加AI。
 
 ```lua
 -- 将创建的AI保存下来，你之后可能需要修改它的属性，或是为它注册事件
@@ -53,7 +53,7 @@ local mt = ac.ai[name]
 获得AI事件
 
 * 回调参数
-    * data (table) - AI数据，使用[unit:add_ai]添加AI时作为 **参数2** 传入。
+    * data (table) - AI数据，使用[add_ai]添加AI时作为 **参数2** 传入。
 
 单位添加AI时触发此事件。
 
@@ -97,6 +97,6 @@ end
 [pulse]: /ac/api/ai?id=pulse
 [隐藏]: /ac/unit/restriction?id=隐藏
 [ac.game:disable_ai]: /ac/api/game?id=disable_ai
-[unit:add_ai]: /ac/api/unit?id=add_ai
+[add_ai]: /ac/api/unit?id=add_ai
 [ai:on_idle]: /ac/api/ai?id=on_idle
 [创建]: /ac/api/ai?id=pulse
