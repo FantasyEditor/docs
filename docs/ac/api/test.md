@@ -158,3 +158,5 @@ end
 ```
 
 [弱表]: http://cloudwu.github.io/lua53doc/manual.html#2.5.2
+[draw_circle]: /ac/api/test?id=draw_circle
+[draw_rect]: /ac/api/test?id=draw_rect
