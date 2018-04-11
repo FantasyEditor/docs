@@ -29,3 +29,4 @@
   * [selector](/ac/api/selector)
   * [skill](/ac/api/skill)
   * [template_buff](/ac/api/template_buff)
+  * [test](/ac/api/test)
