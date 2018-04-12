@@ -408,6 +408,18 @@ end)
 unit:event_dispatch('自定义事件', ...)
 ```
 
+#### event_has
+是否订阅事件
+
+* 参数
+    * name (string) - 事件名
+* 返回
+    * result (boolean) - 结果
+
+```lua
+local result = unit:event_has(name)
+```
+
 #### event_notify
 触发事件
 
@@ -418,9 +430,373 @@ unit:event_dispatch('自定义事件', ...)
 这是对`ac.event_notify`方法的封装，你可以在[这里][event]看到详细说明。
 
 ```lua
-player:event_notify('自定义事件', ...)
+unit:event_notify('自定义事件', ...)
 ```
 
+#### event_subscribe
+订阅事件
+
+* 参数
+    * name (string) - 事件名
+
+订阅拥有计数，使用[event][unit:event]会自动订阅事件。
+
+#### execute_ai
+执行AI
+
+```lua
+unit:event_subscribe '单位-死亡'
+```
+
+#### follow
+跟随
+
+* 参数
+    * data (table) - [跟随属性]
+* 返回
+    * *mover* (mover) - 运动
+
+```lua
+local mover = unit:follow
+{
+    source = unit,
+    skill = skill,
+    mover = target,
+}
+```
+
+#### find_buff
+寻找状态
+
+* 参数
+    * name (string) - 状态名称
+* 返回
+    * *buff* (buff) - 找到的状态
+
+如果有多个同名状态，则返回其中一个状态。
+
+```lua
+local buff = unit:find_buff(name)
+```
+
+#### find_skill
+寻找技能
+
+* 参数
+    * name (string/integer) - 技能名/格子
+    * *type* (string) - [技能类型]
+* 返回
+    * *skill* (skill) - 技能
+
+指定`type`后只在此类型中寻找技能。如果`name`使用格子，那么必须要指定`type`。不会找到0级技能。
+
+```lua
+local skill = unit:find_skill('技能名')
+local skill = unit:find_skill(0, '英雄')
+```
+
+#### get
+获取属性
+
+* 参数
+    * state (string) - [单位属性]
+* 返回
+    * value (number) - 数值
+
+```lua
+local value = unit:get '生命'
+```
+
+#### get_class
+获取单位类别
+
+* 返回
+    * class (string) - [单位类别]
+
+```lua
+local class = unit:get_class()
+```
+
+#### get_data
+获取数据
+
+* 返回
+    * data (table) - 数据表
+
+```lua
+local data = unit:get_data()
+```
+
+#### get_facing
+获取朝向
+
+* 返回
+    * face (number) - 朝向
+
+朝向的取值范围为(-180, 180]。
+
+```lua
+local face = unit:get_facing()
+```
+
+#### get_height
+获取高度
+
+* 返回
+    * height (number) - 高度
+
+```lua
+local height = unit:get_height()
+```
+
+#### get_level
+获取等级
+
+* 返回
+    * level (integer) - 等级
+
+```lua
+local level = unit:get_level()
+```
+
+#### get_name
+获取名字
+
+* 返回
+    * name (string) - 单位名字
+
+```lua
+local name = unit:get_name()
+```
+
+#### get_owner
+获取控制单位的玩家
+
+* 返回
+    * player (player) - 控制单位的玩家
+
+```lua
+local player = unit:get_owner()
+```
+
+#### get_point
+获取位置
+
+* 返回
+    * point (point) - 位置
+
+```lua
+local point = unit:get_point()
+```
+
+#### get_resource
+获取能量
+
+* 参数
+    * type (stirng) - [能量类型][能量]
+* 返回
+    * value (number) - 数值
+
+```lua
+local value = unit:get_resource '怒气'
+```
+
+#### get_resource_type
+获取能量类型
+
+* 返回
+    * type (string) - [能量类型][能量]
+
+```lua
+local type = unit:get_resource_type()
+```
+
+#### get_restriction
+获取行为限制计数
+
+* 参数
+    * type (string) - [行为限制]
+* 返回
+    * count (integer) - 计数
+
+```lua
+local count = unit:get_restriction(type)
+```
+
+#### get_selected_radius
+获取选取半径
+
+* 返回
+    * radius (number) - 选取半径
+
+```lua
+local radius = unit:get_selected_radius()
+```
+
+#### get_team_id
+获取队伍ID
+
+* 返回
+    * team (integer) - 队伍ID
+
+```lua
+local team = unit:get_team_id()
+```
+
+#### get_type
+获取单位类型
+
+* 返回
+    * type (string) - [单位类型]
+
+```lua
+local type = unit:get_type()
+```
+
+#### get_walk_command
+获取行走命令
+
+* 返回
+    * *command* (string) - 命令
+    * *target* - 目标
+
+可以通过该方法了解单位为什么在行走，返回`walk`表示只是在行走，`attack`表示是为了进行攻击，技能名表示是为了使用技能，`target`为行走目标（如果有的话）。如果不在行走则返回`nil`。
+
+```lua
+local command, target = unit:get_walk_command()
+```
+
+#### get_xy
+获取坐标
+
+* 返回
+    * x (number) - X坐标
+    * y (number) - Y坐标
+
+```lua
+local x, y = unit:get_xy()
+```
+
+#### has_restriction
+是否存在限制
+
+* 参数
+    * type (string) - [行为限制]
+* 返回
+    * result (boolean) - 结果
+
+```lua
+local result = unit:has_restriction(type)
+```
+
+#### is_alive
+是否存活
+
+* 返回
+    * result (boolean) - 是否存活
+
+```lua
+local result = unit:is_alive()
+```
+
+#### is_ally
+是否是友方
+
+* 参数
+    * dest (unit/player) - 目标单位/目标玩家
+* 返回
+    * result (boolean) - 是否是友方
+
+```lua
+local result = unit:is_ally(dest)
+```
+
+#### is_enemy
+是否是敌人
+
+* 参数
+    * dest (unit/player) - 目标单位/目标玩家
+* 返回
+    * result (boolean) - 是否是敌人
+
+```lua
+local result = unit:is_enemy(dest)
+```
+
+#### is_illusion
+是否是幻象
+
+* 返回
+    * result (boolean) - 是否是幻象
+
+```lua
+local result = unit:is_illusion()
+```
+
+#### is_in_range
+是否在范围内
+
+* 参数
+    * target (point/unit) - 目标位置
+    * radius (number) - 范围
+* 返回
+    * result (boolean) - 结果
+
+会算上自己的[选取半径]。
+
+```lua
+local result = unit:is_in_range(target, radius)
+```
+
+#### is_visible
+是否可见
+
+* 参数
+    * dest (unit/player) - 单位/玩家
+* 结果
+    * result (boolean) - 结果
+
+判断单位能否被`dest`看到。如果`dest`是单位，则会使用控制`dest`的玩家来计算[视野]。
+
+```lua
+local result = unit:is_visible(dest)
+```
+
+#### is_walking
+是否在行走
+
+* 返回
+    * result (boolean) - 结果
+
+```lua
+local result = unit:is_walking()
+```
+
+#### kill
+杀死
+
+* 参数
+    * *killer* (unit) - 凶手
+* 返回
+    * result (boolean) - 是否成功
+
+没有凶手时，凶手视为自己。
+
+```lua
+local result = unit:kill(killer)
+```
+
+#### learn_skill
+学技能
+
+* 参数
+    * name (string) - 技能名
+
+触发[单位-学习技能]事件。
+
+```lua
+unit:learn_skill(name)
+```
 
 [单位]: /ac/unit
 [单位属性]: /ac/unit/attribute
@@ -436,9 +812,17 @@ player:event_notify('自定义事件', ...)
 [buff]: /ac/api/buff
 [attack]: /ac/api/attack
 [effect]: /ac/api/effect
+[event]: /ac/api/event
 [弹道捕获器]: /ac/api/capturer
 [弹道捕获器属性]: /ac/api/capturer?id=属性
 [单位-初始化]: 404
 [单位-创建]: 404
+[单位-学习技能]: 404
 [create_unit]: /ac/api/unit?id=create_unit
 [create_illusion]: /ac/api/unit?id=create_illusion
+[unit:event]: /ac/api/unit?id=event
+[跟随属性]: /ac/api/follow?id=属性
+[跟随]: /ac/api/follow
+[单位类别]: 404
+[单位类型]: 404
+[选取半径]: /ac/api/unit?id=get_selected_radius

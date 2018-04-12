@@ -66,10 +66,11 @@ end
 #### on_idle
 空闲事件
 
-这个事件会在以下3种情况触发：
+这个事件会在以下4种情况触发：
 1. 进入空闲状态。例如技能施放结束；行走结束；攻击结束等。
 2. 攻击冷却完成。
 3. 根据AI的[pulse]属性周期性调用。
+4. 使用[execute_ai]主动执行。
 
 在以下情况下不会触发此事件：
 1. 处于死亡状态。
@@ -100,3 +101,4 @@ end
 [add_ai]: /ac/api/unit?id=add_ai
 [ai:on_idle]: /ac/api/ai?id=on_idle
 [创建]: /ac/api/ai?id=pulse
+[execute_ai]: /ac/api/unit?id=execute_ai
