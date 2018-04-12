@@ -84,7 +84,7 @@ ai_attack:add_threat(unit, threat, time)
 增加类型仇恨
 
 * 参数
-    * type (string) - 单位类型，使用[UnitType]
+    * type (string) - [单位类型]
     * threat (integer) - 仇恨
         + threat > 0: 单位类型获得该等级的仇恨，不同等级的仇恨可以共存，最高的仇恨生效。清空单位类型的负仇恨。
         + threat == 0: 清空单位类型的仇恨。
@@ -109,9 +109,9 @@ local target = ai_attack(unit)
 ```
 
 [搜敌规则]: /ac/api/ai_attack?id=搜敌规则
-[UnitType]: 404
 [单位仇恨]: /ac/api/ai_attack?id=add_threat
 [队伍仇恨]: /ac/api/ai_attack?id=add_team_threat
 [类型仇恨]: /ac/api/ai_attack?id=add_type_threat
 [攻击范围]: /ac/unit/attribute?id=攻击范围
 [搜敌范围]: /ac/unit/attribute?id=搜敌范围
+[单位类型]: /ac/unit/单位类型

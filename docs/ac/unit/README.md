@@ -8,3 +8,5 @@
   * [属性](/ac/unit/attribute)
   * [行为限制](/ac/unit/restriction)
   * [能量](/ac/unit/能量)
+  * [单位类型](/ac/unit/单位类型)
+  * [单位类别](/ac/unit/单位类别)
