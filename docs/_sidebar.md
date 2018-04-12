@@ -1,5 +1,6 @@
 * [入门](/)
   * [快速开始](/quickstart)
+  * [Lua](/lua)
 * 名词
   * [单位](/ac/unit/)
   * [玩家](/ac/player/)
