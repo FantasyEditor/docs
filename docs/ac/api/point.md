@@ -76,10 +76,10 @@ local x, y = point:get_xy()
 ```
 
 #### is_block
-是否是地形阻挡
+是否是静态碰撞
 
 * 返回
-    * result (boolean) - 是否是地形阻挡
+    * result (boolean) - 是否是静态碰撞
 
 ```lua
 local result = point:is_block()

@@ -179,7 +179,7 @@ local mover = skill:mover_target
 #### *block*
 碰撞地形（boolean）
 
-当为`true`时，当运动单位到达地形阻挡时会触发[on_block]事件。若没有注册此事件，则会移除运动。
+当为`true`时，当运动单位到达静态碰撞时会触发[on_block]事件。若没有注册此事件，则会移除运动。
 
 #### *priority*
 优先级（number）
@@ -270,7 +270,7 @@ local mover = skill:mover_line
 
 if mover then
     function mover:on_block()
-        -- start与target的之间有地形阻挡
+        -- start与target的之间有静态碰撞
     end
 
     mover:batch_update()
