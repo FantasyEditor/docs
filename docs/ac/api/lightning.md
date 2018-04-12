@@ -7,7 +7,7 @@
 ```lua
 local lightning = unit:lightning
 {
-    model = '闪电',
+    model = '闪电名称',
     source = {unit, 'socket_hit'},
     target = {point, 100},
 }
