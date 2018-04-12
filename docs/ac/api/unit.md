@@ -441,6 +441,22 @@ unit:event_notify('自定义事件', ...)
 
 订阅拥有计数，使用[event][unit:event]会自动订阅事件。
 
+```lua
+unit:event_subscribe(name)
+```
+
+#### event_unsubscribe
+取消订阅事件
+
+* 参数
+    * name (string) - 事件名
+
+订阅拥有计数，删除触发器时会自动取消订阅相关事件。
+
+```lua
+unit:event_unsubscribe(name)
+```
+
 #### execute_ai
 执行AI
 
@@ -1068,6 +1084,57 @@ unit:stop_skill()
 
 ```lua
 unit:texttag(target, '文本内容', '其他', 'self', { size = 20 })
+```
+
+#### timer
+启动计时器
+
+* 参数
+    * timeout (integer) - 周期（毫秒）
+    * count (integer) - 循环次数
+    * on_timer (function) - 回调函数
+* 返回
+    * timer (timer) - 计时器
+* 回调参数
+    * timer (timer) - 计时器
+
+`count`设置为0表示永久循环。只要有可能，就应该使用此方法来启动计时器，而不是使用`ac.timer`。
+
+```lua
+local timer = unit:timer(1000, 10, function (timer)
+    -- 每1000毫秒执行一次，执行10次
+end)
+```
+
+#### wait
+启动单次计时器
+
+* 参数
+    * timeout (integer) - 周期（毫秒）
+    * on_timer (function) - 回调函数
+* 返回
+    * timer (timer) - 计时器
+* 回调参数
+    * timer (timer) - 计时器
+
+等价于`unit:timer(timeout, 1, on_timer)`。只要有可能，就应该使用此方法来启动计时器，而不是使用`ac.wait`。
+
+```lua
+local timer = unit:wait(1000, function (timer)
+    -- 在1000毫秒后执行一次
+end)
+```
+
+#### walk
+行走
+
+* 参数
+    * target (point) - 目标地点
+
+令单位行走到目标地点。
+
+```lua
+unit:walk(target)
 ```
 
 [单位]: /ac/unit
