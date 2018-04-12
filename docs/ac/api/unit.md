@@ -824,5 +824,5 @@ unit:learn_skill(name)
 [跟随属性]: /ac/api/follow?id=属性
 [跟随]: /ac/api/follow
 [单位类别]: 404
-[单位类型]: 404
+[单位类型]: /ac/unit/单位类型
 [选取半径]: /ac/api/unit?id=get_selected_radius
