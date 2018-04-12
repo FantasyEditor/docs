@@ -441,6 +441,22 @@ unit:event_notify('自定义事件', ...)
 
 订阅拥有计数，使用[event][unit:event]会自动订阅事件。
 
+```lua
+unit:event_subscribe(name)
+```
+
+#### event_unsubscribe
+取消订阅事件
+
+* 参数
+    * name (string) - 事件名
+
+订阅拥有计数，删除触发器时会自动取消订阅相关事件。
+
+```lua
+unit:event_unsubscribe(name)
+```
+
 #### execute_ai
 执行AI
 
@@ -547,16 +563,6 @@ local face = unit:get_facing()
 
 ```lua
 local height = unit:get_height()
-```
-
-#### get_level
-获取等级
-
-* 返回
-    * level (integer) - 等级
-
-```lua
-local level = unit:get_level()
 ```
 
 #### get_name
@@ -798,6 +804,339 @@ local result = unit:kill(killer)
 unit:learn_skill(name)
 ```
 
+#### lightning
+创建闪电
+
+* 参数
+    * data (table) - [闪电属性]
+* 返回
+    * *lightning* (lightning) - 闪电
+
+闪电相关的描述见[这里][闪电]。
+
+```lua
+local lightning = unit:lightning
+{
+    model = '闪电名称',
+    source = {unit, 'socket_hit'},
+    target = {point, 100},
+}
+```
+
+#### loop
+启动循环计时器
+
+* 参数
+    * timeout (integer) - 周期（毫秒）
+    * on_timer (function) - 回调函数
+* 返回
+    * timer (timer) - 计时器
+* 回调参数
+    * timer (timer) - 计时器
+
+等价于`unit:timer(timeout, 0, on_timer)`。只要有可能，就应该使用此方法来启动计时器，而不是使用`ac.loop`。
+
+```lua
+local timer = unit:loop(1000, function (timer)
+    -- 每1000毫秒执行一次，直到手动移除触发器或单位被移除
+end)
+```
+
+#### reborn
+复活
+
+* 参数
+    * where (point) - 复活位置
+
+触发[单位-复活]事件。
+
+```lua
+unit:reborn(where)
+```
+
+#### remove
+移除
+
+```lua
+unit:remove()
+```
+
+#### remove_animation
+移除动画
+
+* 参数
+    * name (string) - 动画名称
+
+```lua
+unit:remove_animation '动画名称'
+```
+
+#### remove_buff
+移除状态
+
+* 参数
+    * name (string) - 状态名称
+
+会移除所有该名称的状态。
+
+```lua
+unit:remove_buff(name)
+```
+
+#### remove_provide_sight
+不提供视野
+
+* 参数
+    * team (integer) - 队伍ID
+
+令单位的视野不提供给指定队伍。视野的说明见[这里][视野]。
+
+```lua
+unit:remove_provide_sight(1)
+```
+
+#### remove_restriction
+移除行为限制
+
+* 参数
+    * type (string) - [行为限制]
+
+```lua
+unit:remove_restriction '无敌'
+```
+
+#### replace_attack
+切换攻击技能
+
+* 参数
+    * name (string) - [攻击技能]名称
+
+```lua
+unit:replace_attack(name)
+```
+
+#### replace_skill
+切换技能
+
+* 参数
+    * old (string) - 旧技能
+    * new (string) - 新技能
+* 返回
+    * result (boolean) - 是否成功
+
+旧技能不能是隐藏类型，如果新技能还没在单位上，则会先添加为隐藏类型，再替换。
+
+```lua
+unit:replace_skill(old, new)
+```
+
+#### set
+设置属性
+
+* 参数
+    * state (string) - [单位属性]
+    * value (number) - 数值
+
+会清除属性的百分比部分。
+
+```lua
+unit:set('生命', 100)
+```
+
+#### set_attribute_max
+设置属性上限
+
+* 参数
+    * state (string) - [单位属性]
+    * value (number) - 上限值
+
+```lua
+unit:set_attribute_max('攻击速度', 10.0)
+```
+
+#### set_attribute_min
+设置属性下限
+
+* 参数
+    * state (string) - [单位属性]
+    * value (number) - 下限值
+
+```lua
+unit:set_attribute_min('攻击速度', 1.0)
+```
+
+#### set_attribute_sync
+设置属性同步方式
+
+* 参数
+    * name (string) - [单位属性]
+    * sync (string) - [同步方式]
+
+默认同步方式为`none`。
+
+```lua
+unit:set_attribute_sync('攻击速度', 'all')
+```
+
+#### set_facing
+设置朝向
+
+* 参数
+    * angle (number) - 朝向
+    * *time* (integer) - 转身时间（毫秒）
+
+若不填`time`则按照单位转身速度转身，否则按照`time`指定的时间转身，若`time`为0则立即转身。
+
+```lua
+unit:set_facing(90.0, 0)
+```
+
+#### set_height
+设置高度
+
+* 参数
+    * height (number) - 高度
+
+```lua
+unit:set_height(100)
+```
+
+#### set_model
+设置模型
+
+* 参数
+    * name (string) - 单位名称
+
+修改为指定单位的模型。
+
+```lua
+unit:set_model(name)
+```
+
+#### set_resource
+设置能量
+
+* 参数
+    * type (string) - [能量类型][能量]
+    * value (number) - 数值
+
+```lua
+unit:set_resource('怒气', 100)
+```
+
+#### set_selected_radius
+设置选取半径
+
+* 参数
+    * radius (numnber) - 选取半径
+
+在使用[选取器]/[搜敌器]/计算施法距离等操作时会考虑选取半径。
+
+```lua
+unit:set_selected_radius(radius)
+```
+
+#### stop
+打断
+
+打断攻击，施法和行走。
+
+```lua
+unit:stop()
+```
+
+#### stop_attack
+打断攻击
+
+```lua
+unit:stop_attack()
+```
+
+#### stop_cast
+打断攻击和施法
+
+```lua
+unit:stop_cast()
+```
+
+#### stop_skill
+打断施法
+
+```lua
+unit:stop_skill()
+```
+
+#### texttag
+漂浮文字
+
+* 参数
+    * target (unit) - 创建位置
+    * text (string) - 文本内容
+    * type (string) - [漂浮文字类型]
+    * sync (string) - [同步方式]
+    * *data* (table) - 属性
+        + r (integer) - RGB的红色[0,255]，只有“其他”支持。
+        + g (integer) - RGB的绿色[0,255]，只有“其他”支持。
+        + b (integer) - RGB的蓝色[0,255]，只有“其他”支持。
+        + *size* (integer) - 漂浮文字大小，默认为10。
+
+同步方式的参考单位为对象自己。
+
+```lua
+unit:texttag(target, '文本内容', '其他', 'self', { size = 20 })
+```
+
+#### timer
+启动计时器
+
+* 参数
+    * timeout (integer) - 周期（毫秒）
+    * count (integer) - 循环次数
+    * on_timer (function) - 回调函数
+* 返回
+    * timer (timer) - 计时器
+* 回调参数
+    * timer (timer) - 计时器
+
+`count`设置为0表示永久循环。只要有可能，就应该使用此方法来启动计时器，而不是使用`ac.timer`。
+
+```lua
+local timer = unit:timer(1000, 10, function (timer)
+    -- 每1000毫秒执行一次，执行10次
+end)
+```
+
+#### wait
+启动单次计时器
+
+* 参数
+    * timeout (integer) - 周期（毫秒）
+    * on_timer (function) - 回调函数
+* 返回
+    * timer (timer) - 计时器
+* 回调参数
+    * timer (timer) - 计时器
+
+等价于`unit:timer(timeout, 1, on_timer)`。只要有可能，就应该使用此方法来启动计时器，而不是使用`ac.wait`。
+
+```lua
+local timer = unit:wait(1000, function (timer)
+    -- 在1000毫秒后执行一次
+end)
+```
+
+#### walk
+行走
+
+* 参数
+    * target (point) - 目标地点
+
+令单位行走到目标地点。
+
+```lua
+unit:walk(target)
+```
+
 [单位]: /ac/unit
 [单位属性]: /ac/unit/attribute
 [行为限制]: /ac/unit/restriction
@@ -815,14 +1154,20 @@ unit:learn_skill(name)
 [event]: /ac/api/event
 [弹道捕获器]: /ac/api/capturer
 [弹道捕获器属性]: /ac/api/capturer?id=属性
-[单位-初始化]: 404
-[单位-创建]: 404
-[单位-学习技能]: 404
 [create_unit]: /ac/api/unit?id=create_unit
 [create_illusion]: /ac/api/unit?id=create_illusion
 [unit:event]: /ac/api/unit?id=event
 [跟随属性]: /ac/api/follow?id=属性
 [跟随]: /ac/api/follow
+[选取半径]: /ac/api/unit?id=get_selected_radius
+[闪电属性]: /ac/api/lightning?id=属性
+[闪电]: /ac/api/lightning
+[同步方式]: /ac/game/同步方式
+
+[单位-初始化]: 404
+[单位-创建]: 404
+[单位-学习技能]: 404
+[单位-复活]: 404
+[漂浮文字类型]: 404
 [单位类别]: /ac/unit/单位类别
 [单位类型]: /ac/unit/单位类型
-[选取半径]: /ac/api/unit?id=get_selected_radius

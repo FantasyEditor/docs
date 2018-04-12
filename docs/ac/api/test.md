@@ -17,43 +17,6 @@ for key, value in pairs(commands) do
 end
 ```
 
-#### draw_circle
-画圆
-
-* 参数
-    * where (point) - 位置
-    * range (number) - 半径
-
-令客户端在指定位置显示一个圆形。
-
-```lua
-ac.test.draw_circle(where, range)
-```
-
-#### draw_rect
-画矩形
-
-* 参数
-    * start (point) - 起点
-    * width (number) - 宽度
-    * len (number) - 长度
-    * angle (number) - 角度
-
-令客户端在指定位置显示一个矩形。
-
-```lua
-ac.test.draw_rect(where, width, len, angle)
-```
-
-#### draw_clean
-清除图案
-
-清除[draw_circle]与[draw_rect]画的图案。
-
-```lua
-ac.test.draw_clean()
-```
-
 #### message
 显示消息
 

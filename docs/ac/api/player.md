@@ -243,9 +243,9 @@ local reason = player:leave_reason()
 ```lua
 local lightning = player:lightning
 {
-    model = '闪电名',
-    start = start,
-    target = target,
+    model = '闪电名称',
+    source = {unit, 'socket_hit'},
+    target = {point, 100},
 }
 ```
 
