@@ -1,5 +1,5 @@
 # 普通攻击
-普通攻击定义在[CommonSpellData]中。将普通攻击配置在单位的[AttackSkill]中，单位就可以使用它进行攻击。
+[普通攻击]定义在[CommonSpellData]中。
 
 #### active_cd
 激活冷却
@@ -95,7 +95,7 @@ attack:stop()
 
 [skill:is_skill]: /ac/api/skill?id=is_skill
 [skill:is_common_attack]: /ac/api/skill?id=is_common_attack
-[CommonSpellData]: 404
-[AttackSkill]: 404
+[普通攻击]: ac/skill/普通攻击
 [攻击技能]: ac/skill/攻击技能
 [damage]:/ac/api/damage
+[CommonSpellData]: 404
