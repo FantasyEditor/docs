@@ -184,7 +184,7 @@ local attack = unit:attack_skill()
 * 返回
     * result (boolean) - 是否成功
 
-若目标位置有阻挡且单位不能无视阻挡，会将该单位再次传送到附近没有阻挡的位置。
+若目标位置有[静态碰撞]或[动态碰撞]且该单位不能无视它，则会将该单位传送至离目标位置最近的合法位置。
 
 ```lua
 local result = unit:blink(target)
