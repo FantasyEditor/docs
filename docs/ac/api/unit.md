@@ -177,14 +177,14 @@ local attack = unit:attack_skill()
 ```
 
 #### blink
-移动
+传送
 
 * 参数
     * target (point) - 目标位置
 * 返回
     * result (boolean) - 是否成功
 
-若目标位置有阻挡且单位不能无视阻挡，会将该单位再次移动到附近没有阻挡的位置。
+若目标位置有阻挡且单位不能无视阻挡，会将该单位再次传送到附近没有阻挡的位置。
 
 ```lua
 local result = unit:blink(target)
@@ -1126,12 +1126,12 @@ end)
 ```
 
 #### walk
-行走
+移动
 
 * 参数
     * target (point) - 目标地点
 
-令单位行走到目标地点。
+令单位移动到目标地点。
 
 ```lua
 unit:walk(target)
