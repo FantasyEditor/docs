@@ -660,13 +660,13 @@ local type = unit:get_type()
 ```
 
 #### get_walk_command
-获取行走命令
+获取移动命令
 
 * 返回
     * *command* (string) - 命令
     * *target* - 目标
 
-可以通过该方法了解单位为什么在行走，返回`walk`表示只是在行走，`attack`表示是为了进行攻击，技能名表示是为了使用技能，`target`为行走目标（如果有的话）。如果不在行走则返回`nil`。
+可以通过该方法了解单位为什么在移动，返回`walk`表示只是在移动，`attack`表示是为了进行攻击，技能名表示是为了使用技能，`target`为移动目标（如果有的话）。如果不在移动则返回`nil`。
 
 ```lua
 local command, target = unit:get_walk_command()
@@ -769,7 +769,7 @@ local result = unit:is_visible(dest)
 ```
 
 #### is_walking
-是否在行走
+是否在移动
 
 * 返回
     * result (boolean) - 结果
@@ -1039,7 +1039,7 @@ unit:set_selected_radius(radius)
 #### stop
 打断
 
-打断攻击，施法和行走。
+打断攻击，施法和移动。
 
 ```lua
 unit:stop()
