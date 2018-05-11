@@ -93,7 +93,7 @@ ai_attack:add_threat(unit, threat, time)
 为指定单位类型增加仇恨。仇恨相关见[搜敌规则]。
 
 ```lua
-ai_attack:add_threat(type, threat)
+ai_attack:add_type_threat(type, threat)
 ```
 
 #### ai_attack

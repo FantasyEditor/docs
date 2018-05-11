@@ -1,5 +1,16 @@
 # 游戏
 
+### 属性
+#### max_level
+等级上限
+
+用于[英雄升级]库，表示单位可以通过经验达到的等级上限。
+
+```lua
+local level = ac.game.max_level
+```
+
+### 方法
 #### get_winner
 获取胜利队伍
 
@@ -8,6 +19,23 @@
 
 ```lua
 local team_id = ac.game:get_winner()
+```
+
+#### on_reborn
+设置英雄复活
+
+* 回到参数
+    * dead_hero (unit) - 死亡的英雄
+* 回调返回
+    * reborn_time (integer) - 复活时间（毫秒）
+    * *reborn_point* (point) - 复活位置
+
+用于[英雄复活]，当有单位类型为`英雄`的单位死亡时会执行回调，并使用回调函数返回的时间与位置来决定复活事件与复活后的位置。复活位置默认为单位死亡时的位置。
+
+```lua
+ac.game:on_reborn(function (hero)
+    return 10000, hero:get_point()
+end)
 ```
 
 #### play_music
@@ -57,6 +85,24 @@ ac.game:player_attribute_sync('金钱', 'all')
 
 ```lua
 ac.game:show_timer(50000, true)
+```
+
+#### set_level_exp
+设置升级经验
+
+* 参数
+    * list (table) - 升级所需经验列表
+
+用于[英雄升级]库，列表中每一项表示英雄从该等级提升到下一等级所需要的经验。设置后，[max_level]会被设置为列表大小+1。
+
+```lua
+ac.game:set_level_exp
+{
+    100,
+    200,
+    300,
+    400,
+}
 ```
 
 #### set_winner
@@ -132,6 +178,10 @@ ac.game:unit_attribute_sync('护盾', 'all')
 ac.game.wtf(true)
 ```
 
+[max_level]: /ac/api/game?id=max_level
+
 [同步方式]: /ac/game/同步方式
 [玩家属性]: /ac/player/attribute
 [单位属性]: /ac/unit/attribute
+[英雄升级]: 404
+[英雄复活]: 404
