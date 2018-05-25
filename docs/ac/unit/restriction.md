@@ -75,6 +75,7 @@
 [赤座灯里]: /ac/unit/restriction?id=赤座灯里
 [视野阻挡]: /ac/game/视野?id=视野阻挡
 [攻击技能]: /ac/skill/攻击技能
+[技能]: /ac/skill/技能
 [伤害结算]: /ac/damage/伤害结算
 [选取器]: /ac/api/selector.md
 
@@ -82,4 +83,3 @@
 [动态碰撞]: /ac/unit/动态碰撞
 [静态碰撞]: /ac/unit/静态碰撞
 
-### 相关API

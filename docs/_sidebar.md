@@ -28,6 +28,7 @@
   * [region](/ac/api/region)
   * [rpc](/ac/api/rpc)
   * [selector](/ac/api/selector)
+  * [simple_ai](/ac/api/simple_ai)
   * [skill](/ac/api/skill)
   * [template_buff](/ac/api/template_buff)
   * [test](/ac/api/test)
