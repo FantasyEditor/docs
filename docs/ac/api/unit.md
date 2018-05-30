@@ -38,10 +38,9 @@ unit:add_ai '小兵'
 * 参数
     * name (string) - 动画名称
     * *speed* (number) - 动画播放速度，默认为1.0
-    * *loop* (boolean) - 循环播放，默认为`false`
 
 ```lua
-unit:add_animation('动画名称', 2.0, true)
+unit:add_animation('动画名称', 2.0)
 ```
 
 #### add_buff
