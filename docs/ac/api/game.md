@@ -183,5 +183,5 @@ ac.game.wtf(true)
 [同步方式]: /ac/game/同步方式
 [玩家属性]: /ac/player/attribute
 [单位属性]: /ac/unit/attribute
-[英雄升级]: 404
+[英雄升级]: /ac/game/英雄升级
 [英雄复活]: 404

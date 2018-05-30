@@ -149,6 +149,9 @@
 [魔法]: /ac/unit/attribute?id=魔法
 [魔法上限]: /ac/unit/attribute?id=魔法上限
 [攻击范围]: /ac/unit/attribute?id=攻击范围
+[经验上限]: /ac/unit/attribute?id=经验上限
+[等级]: /ac/unit/attribute?id=等级
+[经验]: /ac/unit/attribute?id=经验
 [搜敌器]: /ac/api/ai_attack
 [行为限制]: /ac/unit/restriction
 [同步方式]: /ac/game/同步方式
@@ -159,7 +162,8 @@
 [伤害结算]: /ac/damage/伤害结算
 
 [Constant]: 404
-[英雄升级]: 404
+[英雄升级]: /ac/game/英雄升级
+[学习技能]: 404
 [伤害初始化]: 404
 [伤害前效果]: 404
 [伤害开始]: 404

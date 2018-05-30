@@ -64,6 +64,18 @@ local buff = unit:add_buff('状态名称', 1000)
 }
 ```
 
+#### add_exp
+增加经验
+
+* 参数
+    * exp (number) - 经验值
+
+用于[英雄升级]库。
+
+```lua
+unit:add_exp(100)
+```
+
 #### add_height
 增加高度
 
@@ -74,6 +86,18 @@ local buff = unit:add_buff('状态名称', 1000)
 
 ```lua
 unit:add_height(100)
+```
+
+#### add_level
+提升等级
+
+* 参数
+    * level (interger) - 等级
+
+用于[英雄升级]库。等级不能降低。
+
+```lua
+unit:add_level(1)
 ```
 
 #### add_provide_sight
@@ -543,6 +567,18 @@ local class = unit:get_class()
 local data = unit:get_data()
 ```
 
+#### get_exp
+获取经验
+
+* 返回
+    * exp (number) - 经验
+
+用于[英雄升级]库。
+
+```lua
+local exp = unit:get_exp()
+```
+
 #### get_facing
 获取朝向
 
@@ -563,6 +599,30 @@ local face = unit:get_facing()
 
 ```lua
 local height = unit:get_height()
+```
+
+#### get_level
+获取等级
+
+* 返回
+    * level (interger) - 等级
+
+用于[英雄升级]。
+
+```lua
+local level = unit:get_level()
+```
+
+#### get_max_exp
+获取经验上限
+
+* 返回
+    * exp (number) - 经验上限
+
+用于[英雄升级]库。
+
+```lua
+local exp = unit:get_max_exp()
 ```
 
 #### get_name
@@ -798,7 +858,7 @@ local result = unit:kill(killer)
 * 参数
     * name (string) - 技能名
 
-触发[单位-学习技能]事件。
+用于[学习技能]库。
 
 ```lua
 unit:learn_skill(name)
@@ -1001,6 +1061,18 @@ unit:set_facing(90.0, 0)
 unit:set_height(100)
 ```
 
+#### set_level
+设置等级
+
+* 参数
+    * level (interger) - 等级
+
+用于[英雄升级]库。等级不能降低。
+
+```lua
+unit:set_level(2)
+```
+
 #### set_model
 设置模型
 
@@ -1173,3 +1245,5 @@ unit:walk(target)
 [漂浮文字类型]: 404
 [动态碰撞]: /ac/unit/动态碰撞
 [静态碰撞]: /ac/unit/静态碰撞
+[英雄升级]: /ac/game/英雄升级
+[学习技能]: 404
