@@ -16,7 +16,6 @@
   * [cheat](/ac/api/cheat)
   * [damage](/ac/api/damage)
   * [debugger](/ac/api/debugger)
-  * [effect](/ac/api/effect)
   * [event](/ac/api/event)
   * [game](/ac/api/game)
   * [ini](/ac/api/ini)

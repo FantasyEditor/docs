@@ -77,24 +77,6 @@ for player in ac.each_player 'user' do
 end
 ```
 
-#### effect
-创建特效
-
-* 参数
-    * data (table) - 属性表
-* 返回
-    * effect (effect) - 特效
-
-特效的属性与相关信息见[这里][特效]
-
-```lua
-local effect = player:effect
-{
-    model = '特效名',
-    target = point,
-}
-```
-
 #### event
 注册事件
 
@@ -465,7 +447,6 @@ local level = player:user_level()
 [create_illusion]: /ac/api/unit?id=create_illusion
 [单位-初始化]: 404
 [config]: 404
-[特效]: /ac/api/effect
 [闪电]: /ac/api/lightning
 [event]: /ac/api/event
 [玩家的英雄]: /ac/player/玩家的英雄

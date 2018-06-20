@@ -379,24 +379,6 @@ for skill in unit:each_skill '英雄' do
 end
 ```
 
-#### effect
-创建特效
-
-* 参数
-    * data (table) - [特效属性]
-* 返回
-    * *effect* (effect) - 特效
-
-特效相关说明见[这里][effect]。
-
-```lua
-local effect = unit:effect
-{
-    model = '特效名',
-    target = point,
-}
-```
-
 #### enable_ai
 启用AI
 
@@ -1223,11 +1205,9 @@ unit:walk(target)
 [视野]: /ac/game/视野
 [能量]: /ac/unit/能量
 [状态属性]: /ac/api/buff?id=属性
-[特效属性]: /ac/api/effect?id=属性
 [ai]: /ac/api/ai
 [buff]: /ac/api/buff
 [attack]: /ac/api/attack
-[effect]: /ac/api/effect
 [event]: /ac/api/event
 [弹道捕获器]: /ac/api/capturer
 [弹道捕获器属性]: /ac/api/capturer?id=属性
