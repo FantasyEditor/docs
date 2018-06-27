@@ -158,7 +158,7 @@ ac.game:unit_attribute_min('移动速度', 100)
     * state (string) - 单位属性
     * sync (string) - 同步方式
 
-单位属性见[这里][单位属性]。同步方式见[这里][同步方式]，默认同步方式为`none`。
+只会影响之后创建出来的单位。单位属性见[这里][单位属性]。同步方式见[这里][同步方式]，默认同步方式为`none`。
 
 ```lua
 ac.game:unit_attribute_sync('护盾', 'all')
