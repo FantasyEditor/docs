@@ -48,17 +48,6 @@
 
 我们定制了随机数发生器，以保证随机数不会受到外部因素的影响，并且我们关闭了`math.randomseed`。
 
-> 三角函数使用角度制
-
-包括
-
-* math.sin
-* math.cos
-* math.tan
-* math.asin
-* math.acos
-* math.atan
-
 > 不支持从文件加载代码
 
 包括
@@ -67,7 +56,5 @@
 * loadfile
 
 > 部分支持`coroutine`
-
-不要直接使用，而是用`ac.rpc`。
 
 > 在正式环境不支持`debug`库
