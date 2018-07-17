@@ -106,9 +106,161 @@ print(result) --> 3
 ### 内置事件
 幻想编辑器内置了许多事件，有些事件是通过[event_dispatch]发起的，意味着你可以给他设置返回值，这些事件会特别说明。
 
-待补充
+#### 单位-初始化
+
+* 参数
+    * unit (unit) - 创建的单位
+
+此时单位还未添加技能，在这个事件中给单位添加技能可以阻止 **HeroSkill** 与 **HideSkill** 中的同槽位技能。
+
+```lua
+ac.game:event('单位-初始化', function (trg, unit)
+end)
+```
+
+#### 单位-创建
+
+* 参数
+    * unit (unit) - 创建的单位
+
+此时技能已经添加完毕，如果是镜像的话单位属性也已经复制完毕。
+
+```lua
+ac.game:event('单位-创建', function (trg, unit)
+end)
+```
+
+#### 单位-即将死亡
+
+* 参数
+    * damage (damage) - 即将杀死单位的伤害
+
+当单位即将因为受到伤害而死亡时会触发此事件，返回 `false` 可以阻止单位被杀死。
+
+```lua
+unit:event('单位-即将死亡', function (trg, damage)
+    return false
+end)
+```
+
+#### 单位-死亡
+
+* 参数
+    * dead (unit) - 死者
+    * killer (unit) - 凶手
+
+此时单位已经死亡。
+
+```lua
+unit:event('单位-死亡', function (trg, unit, killer)
+end)
+```
+
+#### 单位-复活
+
+* 参数
+    * unit (unit) - 复活的单位
+
+此时单位已经复活。
+
+```lua
+unit:event('单位-复活', function (trg, unit)
+end)
+```
+
+#### 单位-升级
+
+* 参数
+    * unit (unit) - 升级的单位
+
+此时单位已经升级。
+
+!> 在该事件中，单位的[经验]有可能大于[经验上限]。
+
+```lua
+unit:event('单位-升级', function (trg, unit)
+end)
+```
+
+#### 单位-即将获得状态
+
+* 参数
+    * unit (unit) - 获得状态的单位
+    * buff (buff) - 获得的状态
+
+返回`false`可以阻止获得状态。
+
+```lua
+unit:event('单位-即将获得状态', function (trg, buff)
+    return false
+end)
+```
+
+#### 单位-获得状态
+
+* 参数
+    * unit (unit) - 获得状态的单位
+    * buff (buff) - 获得的状态
+
+此时单位已经获得状态。
+
+```lua
+unit:event('单位-获得状态', function (trg, buff)
+end)
+```
+
+#### 单位-攻击开始
+
+* 参数
+    * damage (damage) - 此次攻击的伤害
+
+在该事件中设置`damage.crit_flag = true`可以令本次攻击使用暴击动画和暴击特效。
+
+```lua
+unit:event('单位-攻击开始', function (trg, damage)
+    damage.crit_flag = true
+end)
+```
+
+#### 单位-攻击出手
+
+* 参数
+    * damage (damage) - 此次攻击的伤害
+
+```lua
+unit:event('单位-攻击出手', function (trg, damage)
+end)
+```
+
+#### 单位-请求命令
+
+* 参数
+    * unit (unit) - 请求命令的单位
+    * command (string) - 命令，可能的值有：
+        * `stop` - 停止
+        * `walk` - 移动
+        * `attack` - 攻击
+        * `walk-attack` - 攻击移动
+        * `技能名` - 想要使用这个技能
+    * target (unit/point/nil) - 命令目标，他的类型由命令决定：
+        * `stop` - nil
+        * `walk` - unit/point
+        * `attack` - unit
+        * `walk-attack` - point
+        * `技能名` - 由技能的目标类型决定
+    * state (integer) - 组合键
+
+只有来自客户端的命令才会触发此事件，返回`false`可以阻止命令。如果用户发布命令时按住了`Alt`键，则`state`为1。
+
+```lua
+unit:event('单位-请求命令', function (trg, command, target, state)
+    return false
+end)
+```
 
 [控制者]: /ac/api/player?id=get_owner
 [event_notify]: /ac/api/event?id=event_notify
 [event_dispatch]: /ac/api/event?id=event_dispatch
 [触发器]: /ac/api/trigger
+[经验]: /ac/unit/attribute?id=经验
+[经验上限]: /ac/unit/attribute?id=经验上限
