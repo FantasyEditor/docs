@@ -72,6 +72,30 @@ ac.rpc.bank.pay(player, money, '重新随机') -- 将player的余额扣除money�
 #### 初始化
 使用代码`require 'ac.score'`来初始化积分。积分初始化需要一段时间，请不要立即使用它。
 
+#### on_init
+初始化事件
+
+* 参数
+    * player (player) - 玩家
+    * events (table) - 响应事件
+
+当积分初始化完成时，会根据初始化结果执行对应事件。如果使用该方法时积分已经初始化完毕，则会立即执行。
+
+```lua
+ac.score.on_init(player) -- 注册player的积分初始化事件
+{
+    ok = function ()
+        -- 初始化完成
+    end,
+    error = function ()
+        -- 初始化失败
+    end,
+    timeout = function ()
+        -- 初始化超时
+    end,
+}
+```
+
 #### get
 获取全局积分
 
@@ -163,7 +187,7 @@ ac.score.ladd(player, key, score)
 
 * 参数
     * player (player) - 玩家
-    * rpc (rpc) - rpc环境
+    * events (table) - 响应事件
 
 提交玩家的积分，提交积分需要一段时间，在提交完成前对该玩家的积分操作均会失败。如果提交时玩家已经离开游戏，而待提交的积分中包含了[设置全局积分][set]，那么提交将会失败，请务必避免这种情况。
 
