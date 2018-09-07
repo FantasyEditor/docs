@@ -1,6 +1,6 @@
 # 项目已经移动到国内服务器
 
-http://docs.fe.5211game.com/root/ac
+http://docs.fe.5211game.com/root/docs
 
 # 幻想编辑器 Lua文档
 
